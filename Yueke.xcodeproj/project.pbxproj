@@ -1,0 +1,571 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6D75199A2E768CF144D699C2 /* libPods-Yueke.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C5777F407C05604F469166D2 /* libPods-Yueke.a */; };
+		EFD81A2A2142D08600C67EC3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81A292142D08600C67EC3 /* AppDelegate.m */; };
+		EFD81A2D2142D08600C67EC3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81A2C2142D08600C67EC3 /* ViewController.m */; };
+		EFD81A302142D08600C67EC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFD81A2E2142D08600C67EC3 /* Main.storyboard */; };
+		EFD81A332142D08600C67EC3 /* Yueke.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EFD81A312142D08600C67EC3 /* Yueke.xcdatamodeld */; };
+		EFD81A352142D08600C67EC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFD81A342142D08600C67EC3 /* Assets.xcassets */; };
+		EFD81A382142D08600C67EC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFD81A362142D08600C67EC3 /* LaunchScreen.storyboard */; };
+		EFD81A3B2142D08600C67EC3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81A3A2142D08600C67EC3 /* main.m */; };
+		EFD81ACB2143FFFF00C67EC3 /* FSCalendarCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81AAA2143FFFF00C67EC3 /* FSCalendarCollectionView.m */; };
+		EFD81ACC2143FFFF00C67EC3 /* FSCalendarDelegationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81AAE2143FFFF00C67EC3 /* FSCalendarDelegationProxy.m */; };
+		EFD81ACD2143FFFF00C67EC3 /* FSCalendarDelegationFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81AB02143FFFF00C67EC3 /* FSCalendarDelegationFactory.m */; };
+		EFD81ACE2143FFFF00C67EC3 /* FSCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81AB62143FFFF00C67EC3 /* FSCalendarCell.m */; };
+		EFD81ACF2143FFFF00C67EC3 /* FSCalendarStickyHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81AB72143FFFF00C67EC3 /* FSCalendarStickyHeader.m */; };
+		EFD81AD02143FFFF00C67EC3 /* FSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81AB82143FFFF00C67EC3 /* FSCalendar.m */; };
+		EFD81AD12143FFFF00C67EC3 /* FSCalendarCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81AB92143FFFF00C67EC3 /* FSCalendarCollectionViewLayout.m */; };
+		EFD81AD22143FFFF00C67EC3 /* FSCalendarScopeHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81ABA2143FFFF00C67EC3 /* FSCalendarScopeHandle.m */; };
+		EFD81AD32143FFFF00C67EC3 /* FSCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81ABB2143FFFF00C67EC3 /* FSCalendarWeekdayView.m */; };
+		EFD81AD42143FFFF00C67EC3 /* FSCalendarExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81ABF2143FFFF00C67EC3 /* FSCalendarExtensions.m */; };
+		EFD81AD52143FFFF00C67EC3 /* FSCalendar+Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81AC12143FFFF00C67EC3 /* FSCalendar+Deprecated.m */; };
+		EFD81AD62143FFFF00C67EC3 /* FSCalendarConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81AC22143FFFF00C67EC3 /* FSCalendarConstants.m */; };
+		EFD81AD72143FFFF00C67EC3 /* FSCalendarCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81AC32143FFFF00C67EC3 /* FSCalendarCalculator.m */; };
+		EFD81AD82143FFFF00C67EC3 /* FSCalendarHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81AC42143FFFF00C67EC3 /* FSCalendarHeaderView.m */; };
+		EFD81AD92143FFFF00C67EC3 /* FSCalendarTransitionCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81AC82143FFFF00C67EC3 /* FSCalendarTransitionCoordinator.m */; };
+		EFD81ADA2143FFFF00C67EC3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EFD81AC92143FFFF00C67EC3 /* Info.plist */; };
+		EFD81ADB2143FFFF00C67EC3 /* FSCalendarAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81ACA2143FFFF00C67EC3 /* FSCalendarAppearance.m */; };
+		EFD81ADE214400A100C67EC3 /* BaseTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81ADD214400A100C67EC3 /* BaseTabbarController.m */; };
+		EFD81AE12144011A00C67EC3 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81AE02144011A00C67EC3 /* BaseNavigationController.m */; };
+		EFD81AE42144016300C67EC3 /* StudentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81AE32144016300C67EC3 /* StudentsViewController.m */; };
+		EFD81AE8214417AA00C67EC3 /* UIColor+util.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81AE7214417AA00C67EC3 /* UIColor+util.m */; };
+		EFD81AEC2144F3D200C67EC3 /* TimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81AEB2144F3D200C67EC3 /* TimeCell.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0C2761A3C2B8DA645B20DE9F /* Pods-Yueke.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yueke.release.xcconfig"; path = "Pods/Target Support Files/Pods-Yueke/Pods-Yueke.release.xcconfig"; sourceTree = "<group>"; };
+		474B0ED40A4D838B7FCA94A6 /* Pods-Yueke.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yueke.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Yueke/Pods-Yueke.debug.xcconfig"; sourceTree = "<group>"; };
+		C5777F407C05604F469166D2 /* libPods-Yueke.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Yueke.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFD81A252142D08600C67EC3 /* Yueke.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yueke.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFD81A282142D08600C67EC3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EFD81A292142D08600C67EC3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EFD81A2B2142D08600C67EC3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		EFD81A2C2142D08600C67EC3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		EFD81A2F2142D08600C67EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EFD81A322142D08600C67EC3 /* Yueke.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Yueke.xcdatamodel; sourceTree = "<group>"; };
+		EFD81A342142D08600C67EC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EFD81A372142D08600C67EC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EFD81A392142D08600C67EC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFD81A3A2142D08600C67EC3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EFD81AA8214379D000C67EC3 /* Yueke.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Yueke.pch; sourceTree = "<group>"; };
+		EFD81AAA2143FFFF00C67EC3 /* FSCalendarCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCollectionView.m; sourceTree = "<group>"; };
+		EFD81AAB2143FFFF00C67EC3 /* FSCalendarWeekdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarWeekdayView.h; sourceTree = "<group>"; };
+		EFD81AAC2143FFFF00C67EC3 /* FSCalendarCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCollectionViewLayout.h; sourceTree = "<group>"; };
+		EFD81AAD2143FFFF00C67EC3 /* FSCalendarScopeHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarScopeHandle.h; sourceTree = "<group>"; };
+		EFD81AAE2143FFFF00C67EC3 /* FSCalendarDelegationProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarDelegationProxy.m; sourceTree = "<group>"; };
+		EFD81AAF2143FFFF00C67EC3 /* FSCalendarExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarExtensions.h; sourceTree = "<group>"; };
+		EFD81AB02143FFFF00C67EC3 /* FSCalendarDelegationFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarDelegationFactory.m; sourceTree = "<group>"; };
+		EFD81AB12143FFFF00C67EC3 /* FSCalendarCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCalculator.h; sourceTree = "<group>"; };
+		EFD81AB22143FFFF00C67EC3 /* FSCalendarHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarHeaderView.h; sourceTree = "<group>"; };
+		EFD81AB32143FFFF00C67EC3 /* FSCalendarConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarConstants.h; sourceTree = "<group>"; };
+		EFD81AB42143FFFF00C67EC3 /* FSCalendarAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarAppearance.h; sourceTree = "<group>"; };
+		EFD81AB52143FFFF00C67EC3 /* FSCalendarTransitionCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarTransitionCoordinator.h; sourceTree = "<group>"; };
+		EFD81AB62143FFFF00C67EC3 /* FSCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCell.m; sourceTree = "<group>"; };
+		EFD81AB72143FFFF00C67EC3 /* FSCalendarStickyHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarStickyHeader.m; sourceTree = "<group>"; };
+		EFD81AB82143FFFF00C67EC3 /* FSCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendar.m; sourceTree = "<group>"; };
+		EFD81AB92143FFFF00C67EC3 /* FSCalendarCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCollectionViewLayout.m; sourceTree = "<group>"; };
+		EFD81ABA2143FFFF00C67EC3 /* FSCalendarScopeHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarScopeHandle.m; sourceTree = "<group>"; };
+		EFD81ABB2143FFFF00C67EC3 /* FSCalendarWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarWeekdayView.m; sourceTree = "<group>"; };
+		EFD81ABC2143FFFF00C67EC3 /* FSCalendarCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCollectionView.h; sourceTree = "<group>"; };
+		EFD81ABD2143FFFF00C67EC3 /* FSCalendarDynamicHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDynamicHeader.h; sourceTree = "<group>"; };
+		EFD81ABE2143FFFF00C67EC3 /* FSCalendarDelegationFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDelegationFactory.h; sourceTree = "<group>"; };
+		EFD81ABF2143FFFF00C67EC3 /* FSCalendarExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarExtensions.m; sourceTree = "<group>"; };
+		EFD81AC02143FFFF00C67EC3 /* FSCalendarDelegationProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDelegationProxy.h; sourceTree = "<group>"; };
+		EFD81AC12143FFFF00C67EC3 /* FSCalendar+Deprecated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FSCalendar+Deprecated.m"; sourceTree = "<group>"; };
+		EFD81AC22143FFFF00C67EC3 /* FSCalendarConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarConstants.m; sourceTree = "<group>"; };
+		EFD81AC32143FFFF00C67EC3 /* FSCalendarCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCalculator.m; sourceTree = "<group>"; };
+		EFD81AC42143FFFF00C67EC3 /* FSCalendarHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarHeaderView.m; sourceTree = "<group>"; };
+		EFD81AC52143FFFF00C67EC3 /* FSCalendarStickyHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarStickyHeader.h; sourceTree = "<group>"; };
+		EFD81AC62143FFFF00C67EC3 /* FSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendar.h; sourceTree = "<group>"; };
+		EFD81AC72143FFFF00C67EC3 /* FSCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCell.h; sourceTree = "<group>"; };
+		EFD81AC82143FFFF00C67EC3 /* FSCalendarTransitionCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarTransitionCoordinator.m; sourceTree = "<group>"; };
+		EFD81AC92143FFFF00C67EC3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFD81ACA2143FFFF00C67EC3 /* FSCalendarAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarAppearance.m; sourceTree = "<group>"; };
+		EFD81ADC214400A100C67EC3 /* BaseTabbarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseTabbarController.h; sourceTree = "<group>"; };
+		EFD81ADD214400A100C67EC3 /* BaseTabbarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseTabbarController.m; sourceTree = "<group>"; };
+		EFD81ADF2144011A00C67EC3 /* BaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
+		EFD81AE02144011A00C67EC3 /* BaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
+		EFD81AE22144016300C67EC3 /* StudentsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StudentsViewController.h; sourceTree = "<group>"; };
+		EFD81AE32144016300C67EC3 /* StudentsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudentsViewController.m; sourceTree = "<group>"; };
+		EFD81AE6214417AA00C67EC3 /* UIColor+util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+util.h"; sourceTree = "<group>"; };
+		EFD81AE7214417AA00C67EC3 /* UIColor+util.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+util.m"; sourceTree = "<group>"; };
+		EFD81AEA2144F3D200C67EC3 /* TimeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeCell.h; sourceTree = "<group>"; };
+		EFD81AEB2144F3D200C67EC3 /* TimeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimeCell.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EFD81A222142D08600C67EC3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D75199A2E768CF144D699C2 /* libPods-Yueke.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		79BA659B85EAC6F1C46FC4C2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C5777F407C05604F469166D2 /* libPods-Yueke.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EFD81A1C2142D08600C67EC3 = {
+			isa = PBXGroup;
+			children = (
+				EFD81A272142D08600C67EC3 /* Yueke */,
+				EFD81A262142D08600C67EC3 /* Products */,
+				FE879D39F53958BB4358EB21 /* Pods */,
+				79BA659B85EAC6F1C46FC4C2 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		EFD81A262142D08600C67EC3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EFD81A252142D08600C67EC3 /* Yueke.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EFD81A272142D08600C67EC3 /* Yueke */ = {
+			isa = PBXGroup;
+			children = (
+				EFD81AA92143FFFF00C67EC3 /* FSCalendar */,
+				EFD81A282142D08600C67EC3 /* AppDelegate.h */,
+				EFD81A292142D08600C67EC3 /* AppDelegate.m */,
+				EFD81AE6214417AA00C67EC3 /* UIColor+util.h */,
+				EFD81AE7214417AA00C67EC3 /* UIColor+util.m */,
+				EFD81AE52144047700C67EC3 /* BaseController */,
+				EFD81AE92144F3A600C67EC3 /* YuekeVC */,
+				EFD81AE22144016300C67EC3 /* StudentsViewController.h */,
+				EFD81AE32144016300C67EC3 /* StudentsViewController.m */,
+				EFD81AA7214379A300C67EC3 /* supporting files */,
+				EFD81A312142D08600C67EC3 /* Yueke.xcdatamodeld */,
+			);
+			path = Yueke;
+			sourceTree = "<group>";
+		};
+		EFD81AA7214379A300C67EC3 /* supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				EFD81A2E2142D08600C67EC3 /* Main.storyboard */,
+				EFD81A342142D08600C67EC3 /* Assets.xcassets */,
+				EFD81A362142D08600C67EC3 /* LaunchScreen.storyboard */,
+				EFD81A392142D08600C67EC3 /* Info.plist */,
+				EFD81A3A2142D08600C67EC3 /* main.m */,
+				EFD81AA8214379D000C67EC3 /* Yueke.pch */,
+			);
+			path = "supporting files";
+			sourceTree = "<group>";
+		};
+		EFD81AA92143FFFF00C67EC3 /* FSCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				EFD81AAA2143FFFF00C67EC3 /* FSCalendarCollectionView.m */,
+				EFD81AAB2143FFFF00C67EC3 /* FSCalendarWeekdayView.h */,
+				EFD81AAC2143FFFF00C67EC3 /* FSCalendarCollectionViewLayout.h */,
+				EFD81AAD2143FFFF00C67EC3 /* FSCalendarScopeHandle.h */,
+				EFD81AAE2143FFFF00C67EC3 /* FSCalendarDelegationProxy.m */,
+				EFD81AAF2143FFFF00C67EC3 /* FSCalendarExtensions.h */,
+				EFD81AB02143FFFF00C67EC3 /* FSCalendarDelegationFactory.m */,
+				EFD81AB12143FFFF00C67EC3 /* FSCalendarCalculator.h */,
+				EFD81AB22143FFFF00C67EC3 /* FSCalendarHeaderView.h */,
+				EFD81AB32143FFFF00C67EC3 /* FSCalendarConstants.h */,
+				EFD81AB42143FFFF00C67EC3 /* FSCalendarAppearance.h */,
+				EFD81AB52143FFFF00C67EC3 /* FSCalendarTransitionCoordinator.h */,
+				EFD81AB62143FFFF00C67EC3 /* FSCalendarCell.m */,
+				EFD81AB72143FFFF00C67EC3 /* FSCalendarStickyHeader.m */,
+				EFD81AB82143FFFF00C67EC3 /* FSCalendar.m */,
+				EFD81AB92143FFFF00C67EC3 /* FSCalendarCollectionViewLayout.m */,
+				EFD81ABA2143FFFF00C67EC3 /* FSCalendarScopeHandle.m */,
+				EFD81ABB2143FFFF00C67EC3 /* FSCalendarWeekdayView.m */,
+				EFD81ABC2143FFFF00C67EC3 /* FSCalendarCollectionView.h */,
+				EFD81ABD2143FFFF00C67EC3 /* FSCalendarDynamicHeader.h */,
+				EFD81ABE2143FFFF00C67EC3 /* FSCalendarDelegationFactory.h */,
+				EFD81ABF2143FFFF00C67EC3 /* FSCalendarExtensions.m */,
+				EFD81AC02143FFFF00C67EC3 /* FSCalendarDelegationProxy.h */,
+				EFD81AC12143FFFF00C67EC3 /* FSCalendar+Deprecated.m */,
+				EFD81AC22143FFFF00C67EC3 /* FSCalendarConstants.m */,
+				EFD81AC32143FFFF00C67EC3 /* FSCalendarCalculator.m */,
+				EFD81AC42143FFFF00C67EC3 /* FSCalendarHeaderView.m */,
+				EFD81AC52143FFFF00C67EC3 /* FSCalendarStickyHeader.h */,
+				EFD81AC62143FFFF00C67EC3 /* FSCalendar.h */,
+				EFD81AC72143FFFF00C67EC3 /* FSCalendarCell.h */,
+				EFD81AC82143FFFF00C67EC3 /* FSCalendarTransitionCoordinator.m */,
+				EFD81AC92143FFFF00C67EC3 /* Info.plist */,
+				EFD81ACA2143FFFF00C67EC3 /* FSCalendarAppearance.m */,
+			);
+			path = FSCalendar;
+			sourceTree = "<group>";
+		};
+		EFD81AE52144047700C67EC3 /* BaseController */ = {
+			isa = PBXGroup;
+			children = (
+				EFD81ADC214400A100C67EC3 /* BaseTabbarController.h */,
+				EFD81ADD214400A100C67EC3 /* BaseTabbarController.m */,
+				EFD81ADF2144011A00C67EC3 /* BaseNavigationController.h */,
+				EFD81AE02144011A00C67EC3 /* BaseNavigationController.m */,
+			);
+			path = BaseController;
+			sourceTree = "<group>";
+		};
+		EFD81AE92144F3A600C67EC3 /* YuekeVC */ = {
+			isa = PBXGroup;
+			children = (
+				EFD81A2B2142D08600C67EC3 /* ViewController.h */,
+				EFD81A2C2142D08600C67EC3 /* ViewController.m */,
+				EFD81AEA2144F3D200C67EC3 /* TimeCell.h */,
+				EFD81AEB2144F3D200C67EC3 /* TimeCell.m */,
+			);
+			path = YuekeVC;
+			sourceTree = "<group>";
+		};
+		FE879D39F53958BB4358EB21 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				474B0ED40A4D838B7FCA94A6 /* Pods-Yueke.debug.xcconfig */,
+				0C2761A3C2B8DA645B20DE9F /* Pods-Yueke.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EFD81A242142D08600C67EC3 /* Yueke */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EFD81A3E2142D08600C67EC3 /* Build configuration list for PBXNativeTarget "Yueke" */;
+			buildPhases = (
+				D29DF3D14D1C51036E249A8A /* [CP] Check Pods Manifest.lock */,
+				EFD81A212142D08600C67EC3 /* Sources */,
+				EFD81A222142D08600C67EC3 /* Frameworks */,
+				EFD81A232142D08600C67EC3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Yueke;
+			productName = Yueke;
+			productReference = EFD81A252142D08600C67EC3 /* Yueke.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EFD81A1D2142D08600C67EC3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = luoxuguang;
+				TargetAttributes = {
+					EFD81A242142D08600C67EC3 = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+				};
+			};
+			buildConfigurationList = EFD81A202142D08600C67EC3 /* Build configuration list for PBXProject "Yueke" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EFD81A1C2142D08600C67EC3;
+			productRefGroup = EFD81A262142D08600C67EC3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EFD81A242142D08600C67EC3 /* Yueke */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EFD81A232142D08600C67EC3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFD81ADA2143FFFF00C67EC3 /* Info.plist in Resources */,
+				EFD81A382142D08600C67EC3 /* LaunchScreen.storyboard in Resources */,
+				EFD81A352142D08600C67EC3 /* Assets.xcassets in Resources */,
+				EFD81A302142D08600C67EC3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D29DF3D14D1C51036E249A8A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Yueke-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EFD81A212142D08600C67EC3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFD81AD62143FFFF00C67EC3 /* FSCalendarConstants.m in Sources */,
+				EFD81A332142D08600C67EC3 /* Yueke.xcdatamodeld in Sources */,
+				EFD81AD52143FFFF00C67EC3 /* FSCalendar+Deprecated.m in Sources */,
+				EFD81AE42144016300C67EC3 /* StudentsViewController.m in Sources */,
+				EFD81AD72143FFFF00C67EC3 /* FSCalendarCalculator.m in Sources */,
+				EFD81ADB2143FFFF00C67EC3 /* FSCalendarAppearance.m in Sources */,
+				EFD81ACF2143FFFF00C67EC3 /* FSCalendarStickyHeader.m in Sources */,
+				EFD81AEC2144F3D200C67EC3 /* TimeCell.m in Sources */,
+				EFD81ACD2143FFFF00C67EC3 /* FSCalendarDelegationFactory.m in Sources */,
+				EFD81AD12143FFFF00C67EC3 /* FSCalendarCollectionViewLayout.m in Sources */,
+				EFD81A2D2142D08600C67EC3 /* ViewController.m in Sources */,
+				EFD81AD02143FFFF00C67EC3 /* FSCalendar.m in Sources */,
+				EFD81ADE214400A100C67EC3 /* BaseTabbarController.m in Sources */,
+				EFD81AD32143FFFF00C67EC3 /* FSCalendarWeekdayView.m in Sources */,
+				EFD81AE12144011A00C67EC3 /* BaseNavigationController.m in Sources */,
+				EFD81ACB2143FFFF00C67EC3 /* FSCalendarCollectionView.m in Sources */,
+				EFD81AE8214417AA00C67EC3 /* UIColor+util.m in Sources */,
+				EFD81ACC2143FFFF00C67EC3 /* FSCalendarDelegationProxy.m in Sources */,
+				EFD81A3B2142D08600C67EC3 /* main.m in Sources */,
+				EFD81AD42143FFFF00C67EC3 /* FSCalendarExtensions.m in Sources */,
+				EFD81ACE2143FFFF00C67EC3 /* FSCalendarCell.m in Sources */,
+				EFD81AD92143FFFF00C67EC3 /* FSCalendarTransitionCoordinator.m in Sources */,
+				EFD81A2A2142D08600C67EC3 /* AppDelegate.m in Sources */,
+				EFD81AD82143FFFF00C67EC3 /* FSCalendarHeaderView.m in Sources */,
+				EFD81AD22143FFFF00C67EC3 /* FSCalendarScopeHandle.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EFD81A2E2142D08600C67EC3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EFD81A2F2142D08600C67EC3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EFD81A362142D08600C67EC3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EFD81A372142D08600C67EC3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EFD81A3C2142D08600C67EC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		EFD81A3D2142D08600C67EC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EFD81A3F2142D08600C67EC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 474B0ED40A4D838B7FCA94A6 /* Pods-Yueke.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H7SA39ZN7A;
+				GCC_PREFIX_HEADER = "Yueke/supporting files/Yueke.pch";
+				INFOPLIST_FILE = "Yueke/supporting files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.moyou.Yueke;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EFD81A402142D08600C67EC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C2761A3C2B8DA645B20DE9F /* Pods-Yueke.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H7SA39ZN7A;
+				GCC_PREFIX_HEADER = "Yueke/supporting files/Yueke.pch";
+				INFOPLIST_FILE = "Yueke/supporting files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.moyou.Yueke;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EFD81A202142D08600C67EC3 /* Build configuration list for PBXProject "Yueke" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFD81A3C2142D08600C67EC3 /* Debug */,
+				EFD81A3D2142D08600C67EC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EFD81A3E2142D08600C67EC3 /* Build configuration list for PBXNativeTarget "Yueke" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFD81A3F2142D08600C67EC3 /* Debug */,
+				EFD81A402142D08600C67EC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EFD81A312142D08600C67EC3 /* Yueke.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EFD81A322142D08600C67EC3 /* Yueke.xcdatamodel */,
+			);
+			currentVersion = EFD81A322142D08600C67EC3 /* Yueke.xcdatamodel */;
+			path = Yueke.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = EFD81A1D2142D08600C67EC3 /* Project object */;
+}
