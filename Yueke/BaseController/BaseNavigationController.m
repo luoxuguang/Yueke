@@ -16,7 +16,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.navigationBar.barTintColor = BlueColor;
+    self.navigationBar.barStyle = UIBarStyleBlack;
+    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:20]}];
+    
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc]initWithTitle:@""
+                                                                style:UIBarButtonItemStylePlain
+                                                               target:nil
+                                                               action:nil];
+    self.navigationBar.tintColor =
+    [UIColor whiteColor];
+    
+    //主要是以下两个图片设置
+    self.navigationBar.backIndicatorImage = [UIImage imageNamed:@"back"];
+    self.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"back"];
+    self.navigationItem.backBarButtonItem = backItem;
 }
 
 - (void)didReceiveMemoryWarning {

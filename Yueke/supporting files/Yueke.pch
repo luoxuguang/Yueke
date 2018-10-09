@@ -10,11 +10,93 @@
 #define Yueke_pch
 
 #import <Masonry.h>
-
+#import <AFNetworking.h>
+#import "MBProgressHUD+MJ.h"
 #import "UIColor+util.h"
+#import <MJRefresh.h>
+#import "BasicNetWorking.h"
+#import <SAMKeychain.h>
+#import "JohnAlertManager.h"
+#import "YKTool.h"
+
+
+
+typedef NS_ENUM(NSUInteger, ADDTYPE) {
+    ADDSTUDENT,
+    ADDSTORE,
+    ADDCOURSE,
+};
+
+
+
+/*
+ * api
+ */
+#define BaseUrl @"http://198.181.46.158:8080/gym"
+//#define BaseUrl @"http://70c2110b.ngrok.io"
+#define API_login @"/login" //登录
+#define API_logout @"/logOut" //退出登录
+#define API_register @"/register" //注册
+#define API_findUser @"/findUser" //查询所有的学员
+#define API_addUser @"/addUser" //添加学员
+#define API_addCourse @"/addCourse" //添加课程
+#define API_addStore @"/addStore" //添加门店
+#define API_deleteUser @"/deleteUser" //删除学员
+#define API_allCourse @"/findCourse" //查询所有的课程
+#define API_allStore @"/findStore" //查询所有的门店
+
+#define API_addCourseForUser @"/addCourseForUser" //约课
+
+
+#define NUMBER_PAGES_LOADED 5
+
+#define LeftWidth 50
 
 #define SafeAreaTopHeight (ScreenHeight == 812.0 ? 88 : 64)
+
 #define ScreenWidth [UIScreen mainScreen].bounds.size.width
+
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
+
+#define RGB(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]  //带有RGBA的颜色设置
+#define BlueColor  RGB(37, 94, 171, 1)
+
+#define KEYCHAIN_SERVICE @"YUEKE_SERVCICE"
+#define user_token  [[NSUserDefaults standardUserDefaults]objectForKey:@"user_token"]?[[NSUserDefaults standardUserDefaults]objectForKey:@"user_token"]:@""
+
+
+
+#ifndef weakify
+#if DEBUG
+#if __has_feature(objc_arc)
+#define weakify(object) autoreleasepool{} __weak __typeof__(object) weak##_##object = object;
+#else
+#define weakify(object) autoreleasepool{} __block __typeof__(object) block##_##object = object;
+#endif
+#else
+#if __has_feature(objc_arc)
+#define weakify(object) try{} @finally{} {} __weak __typeof__(object) weak##_##object = object;
+#else
+#define weakify(object) try{} @finally{} {} __block __typeof__(object) block##_##object = object;
+#endif
+#endif
+#endif
+
+#ifndef strongify
+#if DEBUG
+#if __has_feature(objc_arc)
+#define strongify(object) autoreleasepool{} __typeof__(object) object = weak##_##object;
+#else
+#define strongify(object) autoreleasepool{} __typeof__(object) object = block##_##object;
+#endif
+#else
+#if __has_feature(objc_arc)
+#define strongify(object) try{} @finally{} __typeof__(object) object = weak##_##object;
+#else
+#define strongify(object) try{} @finally{} __typeof__(object) object = block##_##object;
+#endif
+#endif
+#endif
+
 
 #endif /* Yueke_pch */

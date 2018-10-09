@@ -41,7 +41,10 @@ typedef NS_ENUM(NSInteger,TMTabType) {
     [self setUpSubNav];
     
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear: animated];
+    [self.navigationController.navigationBar setHidden:YES];
+}
 
 - (NSArray*)tabbars{
     

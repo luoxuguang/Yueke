@@ -7,4 +7,11 @@ target 'Yueke' do
 	
   # Pods for Yueke
 	pod 'Masonry'
+    pod 'MJRefresh'
+    pod 'SDWebImage', '~> 4.0'
+    pod 'AFNetworking', '~> 3.0'
+    pod 'MBProgressHUD'
+    pod 'SAMKeychain'
+    pod 'IQKeyboardManager'
+    pod 'Popover.OC'
 end

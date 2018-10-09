@@ -7,16 +7,18 @@
 //
 
 #import "ViewController.h"
-#import "FSCalendar.h"
-#import "TimeCell.h"
+#import "LTSCalendarManager.h"
+#import "EventModel.h"
+#import "AddEventViewController.h"
 
-@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,FSCalendarDelegate,FSCalendarDataSource>
+@interface ViewController ()<LTSCalendarEventSource>
 
-@property (nonatomic,strong) FSCalendar *calendar;
-@property (nonatomic,strong) UITableView *tableView;
-@property (nonatomic,strong) NSMutableArray *dataArr;
+
 @property (strong, nonatomic) UIPanGestureRecognizer *scopeGesture;
 @property (nonatomic) BOOL isWeek;
+@property (nonatomic,strong)LTSCalendarManager *manager;
+@property (nonatomic,strong)UILabel *monthLabel;
+
 
 @end
 
@@ -28,118 +30,109 @@
     
     [self setupUI];
     
+    [self.manager.calenderScrollView.tableView.mj_header beginRefreshing];
+}
+
+-(void)requestData{
+
+    NSDictionary *param = @{@"token":user_token,@"state":@"0"};
+    [BasicNetWorking POST:[NSString stringWithFormat:@"%@%@",BaseUrl,API_allCourse] parameters:param success:^(id responseObject) {
+        [self.manager.calenderScrollView.tableView.mj_header endRefreshing];
+        NSMutableArray *mulArr = [[NSMutableArray alloc]init];
+        [responseObject enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            EventModel *model = [[EventModel alloc]init];
+            model.startDate = [NSDate dateWithTimeIntervalSince1970:[[NSString stringWithFormat:@"%@",[obj objectForKey:@"startDate"]] longLongValue]/1000];
+            model.endDate = [NSDate dateWithTimeIntervalSince1970:[[NSString stringWithFormat:@"%@",[obj objectForKey:@"endDate"]] longLongValue]/1000];
+            model.storeName = [NSString stringWithFormat:@"%@",[[obj objectForKey:@"dateCollege"] objectForKey:@"collegename"]];
+            model.storeId = [NSString stringWithFormat:@"%@",[[obj objectForKey:@"dateCollege"] objectForKey:@"fid"]];
+            model.userId = [NSString stringWithFormat:@"%@",[[obj objectForKey:@"dateUser"] objectForKey:@"fid"]];
+            model.username = [NSString stringWithFormat:@"%@",[[obj objectForKey:@"dateUser"] objectForKey:@"name"]];
+            [mulArr addObject:model];
+        }];
+        
+        self.manager.calenderScrollView.Events =mulArr;
+        
+    } failure:^(NSError *error) {
+        [self.manager.calenderScrollView.tableView.mj_header endRefreshing];
+    }];
+    
     
 }
 
 -(void)setupUI{
     self.navigationItem.title = @"约课";
     UIBarButtonItem *todayItem = [[UIBarButtonItem alloc] initWithTitle:@"TODAY" style:UIBarButtonItemStylePlain target:self action:@selector(todayItemClicked:)];
+    todayItem.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = todayItem;
     self.view.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:self.calendar];
-    [self.view addSubview:self.tableView];
     
-    [self.calendar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self.view).offset(30);
-        make.top.mas_equalTo(self.view).offset(SafeAreaTopHeight);
-        make.height.mas_equalTo(300);
-    }];
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.calendar.mas_bottom);
-        make.left.bottom.right.equalTo(self.view);
-    }];
+    self.manager = [LTSCalendarManager new];
+    self.manager.eventSource = self;
+    [LTSCalendarAppearance share].isShowLunarCalender = NO;
+    [LTSCalendarAppearance share].firstWeekday = 2;
+    self.manager.weekDayView = [[LTSCalendarWeekDayView alloc]initWithFrame:CGRectMake(LeftWidth, SafeAreaTopHeight, self.view.frame.size.width-LeftWidth, 20)];
+    [self.view addSubview:self.manager.weekDayView];
+    
+    self.manager.calenderScrollView = [[LTSCalendarScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.manager.weekDayView.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)-CGRectGetMaxY(self.manager.weekDayView.frame)-SafeAreaTopHeight+10)];
+    @weakify(self)
+    self.manager.calenderScrollView.addCurseBlock = ^(LTSCalendarDayItem *item) {
+        @strongify(self)
+        AddEventViewController *addVc =[[AddEventViewController alloc]init];
+        addVc.item = item;
+        addVc.hidesBottomBarWhenPushed = YES;
+        addVc.ADDSUCCESSBLOCK = ^{
+            [self.manager.calenderScrollView.tableView.mj_header beginRefreshing];
+        };
+        [self.navigationController pushViewController:addVc animated:YES];
+    };
+    
+    
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestData)];
+    header.automaticallyChangeAlpha = YES;
+    header.lastUpdatedTimeLabel.hidden = YES;
+    self.manager.calenderScrollView.tableView.mj_header = header;
+    
+    [self.view addSubview:self.manager.calenderScrollView];
+    
+    
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
+    [self.view addSubview:self.monthLabel];
     
 }
+
+
 - (void)todayItemClicked:(id)sender
 {
-    [_calendar setCurrentPage:[NSDate date] animated:NO];
+   [self.manager goBackToday];
 }
-#pragma mark calendar
-
--(void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition{
-    
+-(void)calendarDidSelectedDate:(NSDate *)date{
+    [self changeMonthWithDate:date];
 }
--(NSInteger)calendar:(FSCalendar *)calendar numberOfEventsForDate:(NSDate *)date{
-    return 0;
-}
--(NSString *)calendar:(FSCalendar *)calendar titleForDate:(NSDate *)date{
-    if ([self.calendar isDateInToday:date]) {
-        return @"今";
-    }
-    return nil;
+- (void)calendarDidLoadPageCurrentDate:(NSDate *)date{
+    [self changeMonthWithDate:date];
 }
 
-#pragma uitableview
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.dataArr.count;
-}
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    TimeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if (!cell) {
-        cell = [[TimeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+-(void)changeMonthWithDate:(NSDate *)date{
+    static NSDateFormatter *dateFormatter;
+    if(!dateFormatter){
+        dateFormatter = [NSDateFormatter new];
+        dateFormatter.timeZone = [LTSCalendarAppearance share].calendar.timeZone;
+        [dateFormatter setDateFormat:@"MM"];
     }
-    cell.title = self.dataArr[indexPath.row];
-    return cell;
-}
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    CGPoint translatedPoint = [scrollView.panGestureRecognizer translationInView:scrollView];
-    if(translatedPoint.y < 0){
-        if (!self.isWeek) {
-            self.calendar.scope = FSCalendarScopeWeek;
-            [self.calendar mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.height.mas_equalTo(120);
-            }];
-            self.isWeek = YES;
-        }
-    }else{
-        if (self.isWeek) {
-            self.calendar.scope = FSCalendarScopeMonth;
-            [self.calendar mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.height.mas_equalTo(300);
-            }];
-            self.isWeek = NO;
-        }
-    }
-        
+    self.monthLabel.text = [NSString stringWithFormat:@"%@月",[dateFormatter stringFromDate:date]];
 }
 
-#pragma mark -- lazy
-
--(FSCalendar *)calendar{
-    if (!_calendar) {
-        _calendar = [[FSCalendar alloc]init];
-        _calendar.appearance.titleFont = [UIFont systemFontOfSize:15.0];
-        _calendar.appearance.headerTitleColor = [UIColor redColor];
-        _calendar.appearance.weekdayTextColor = [UIColor colorWithHex:0x666666];
-        _calendar.appearance.weekdayFont = [UIFont systemFontOfSize:17.0];
-        _calendar.appearance.titleWeekendColor = [UIColor orangeColor];
-        _calendar.appearance.borderSelectionColor = [UIColor orangeColor];
-        _calendar.appearance.selectionColor = [UIColor whiteColor];
-        _calendar.appearance.titleSelectionColor = [UIColor colorWithHex:0x333333];
-        _calendar.locale = [NSLocale localeWithLocaleIdentifier:@"zh-CN"];
-        _calendar.delegate = self;
-        _calendar.dataSource = self;
+-(UILabel *)monthLabel{
+    if (!_monthLabel) {
+        _monthLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, SafeAreaTopHeight, LeftWidth, 50)];
+        _monthLabel.textColor = [UIColor redColor];
+        _monthLabel.textAlignment = NSTextAlignmentCenter;
+        _monthLabel.numberOfLines = 0;
     }
-    return _calendar;
-}
--(UITableView *)tableView{
-    if (!_tableView) {
-        _tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
-        _tableView.tableFooterView = [UIView new];
-        _tableView.rowHeight = 60;
-        _tableView.dataSource = self;
-        _tableView.delegate = self;
-    }
-    return _tableView;
+    return _monthLabel;
 }
 
--(NSMutableArray *)dataArr{
-    if (!_dataArr) {
-        _dataArr = [[NSMutableArray alloc]initWithObjects:@"9:00",@"9:30",@"10:00",@"10:30",@"11:00",@"11:30",@"12:00",@"12:30",@"13:00",@"13:30",@"14:00",@"14:30",@"15:00",@"15:30",@"16:00",@"16:30",@"17:00",@"17:30",@"18:00",@"18:30",@"19:00",@"19:30",@"20:00",@"20:30",@"21:00", nil];
-    }
-    return _dataArr;
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
