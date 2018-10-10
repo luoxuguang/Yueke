@@ -46,7 +46,7 @@
             model.storeName = [NSString stringWithFormat:@"%@",[[obj objectForKey:@"dateCollege"] objectForKey:@"collegename"]];
             model.storeId = [NSString stringWithFormat:@"%@",[[obj objectForKey:@"dateCollege"] objectForKey:@"fid"]];
             model.userId = [NSString stringWithFormat:@"%@",[[obj objectForKey:@"dateUser"] objectForKey:@"fid"]];
-            model.username = [NSString stringWithFormat:@"%@",[[obj objectForKey:@"dateUser"] objectForKey:@"name"]];
+            model.username = [NSString stringWithFormat:@"%@",[[[obj objectForKey:@"dateUser"] objectForKey:@"name"]stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
             [mulArr addObject:model];
         }];
         

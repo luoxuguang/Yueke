@@ -108,27 +108,21 @@
         EventModel *model = (EventModel *)obj;
         
         if ([[YKTool getYMDWithdate:model.startDate] isEqualToString: [YKTool getYMDWithdate:item.date]]) {
+            NSInteger min = 0;
+            NSInteger max = 0;
             if ([YKTool getMinWithdate:model.startDate] >=30) {
-                if (self.CellNum == ([YKTool getHourWithdate:model.startDate]-9)*2+1) {
-                    innerCell.backgroundColor = [UIColor redColor];
-                    label.text = [model.username stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-                }
+                min = ([YKTool getHourWithdate:model.startDate]-9)*2+1;
             }else{
-                if (self.CellNum == ([YKTool getHourWithdate:model.startDate]-9)*2) {
-                    innerCell.backgroundColor = [UIColor redColor];
-                    label.text = [model.username stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-                }
+                min = ([YKTool getHourWithdate:model.startDate]-9)*2;
             }
             if ([YKTool getMinWithdate:model.endDate] >=30) {
-                if (self.CellNum == ([YKTool getHourWithdate:model.endDate]-9)*2) {
-                    innerCell.backgroundColor = [UIColor redColor];
-                    label.text = [model.username stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-                }
+                max = ([YKTool getHourWithdate:model.endDate]-9)*2;
             }else{
-                if (self.CellNum == ([YKTool getHourWithdate:model.endDate]-9)*2-1) {
-                    innerCell.backgroundColor = [UIColor redColor];
-                    label.text = [model.username stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-                }
+                max = ([YKTool getHourWithdate:model.endDate]-9)*2-1;
+            }
+            if (self.CellNum>=min&&self.CellNum<=max) {
+                innerCell.backgroundColor = [UIColor redColor];
+                label.text = model.username;
             }
         }
         

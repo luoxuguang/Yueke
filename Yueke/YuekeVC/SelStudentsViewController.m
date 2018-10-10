@@ -104,14 +104,16 @@
     return 44;
 }
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, tableView.frame.size.width-30, 20)];
-    label.backgroundColor = [UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:0.5];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(15, 0, tableView.frame.size.width-30, 20)];
+    view.backgroundColor = [UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:0.5];
+    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, view.frame.size.width-30, 20)];
     label.textAlignment = NSTextAlignmentLeft;
     label.font = [UIFont systemFontOfSize:15];
     label.textColor = [UIColor colorWithRed:130/255.0 green:130/255.0 blue:130/255.0 alpha:1];
     NSString * title = self.groupTitleArray[section];
     label.text = title;
-    return label;
+    [view addSubview:label];
+    return view;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section    {
     return 20;

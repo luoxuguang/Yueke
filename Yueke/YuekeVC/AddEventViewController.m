@@ -36,6 +36,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.tableView];
     _hour = [YKTool getTimeWithStr:@"HH:mm" Date:[NSDate date]];
+    self.dateField.text = [YKTool getTimeWithStr:@"YYYY-MM-dd" Date:self.item.date];
     
     [self requestData];
 }
@@ -248,7 +249,7 @@
         {
             ZHPickView *pickView = [[ZHPickView alloc] init];
             BOOL isNext = self.endDateField.text.length>0?NO:YES;
-            [pickView setDataViewWithItem:@[@"09",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21"] centerStr:self.endDateField.text.length>0?self.endDateField.text:_hour title:@"结束时间" isNext:isNext column:2];
+            [pickView setDataViewWithItem:@[@"09",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22"] centerStr:self.endDateField.text.length>0?self.endDateField.text:_hour title:@"结束时间" isNext:isNext column:2];
             [pickView showPickView:self];
              @weakify(self)
             pickView.block = ^(NSString *selectedStr)
