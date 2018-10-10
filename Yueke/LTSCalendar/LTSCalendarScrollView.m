@@ -59,7 +59,8 @@ static NSString *contentViewCellId = @"content.tableview.cell";
     self.tableView.dataSource = self;
     self.tableView.estimatedRowHeight = 0;
     self.tableView.rowHeight = 30;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     self.tableView.estimatedSectionHeaderHeight = 0;
     self.tableView.estimatedSectionFooterHeight = 0;
     self.tableView.contentInset = UIEdgeInsetsMake(10, 0, 0, 0);
@@ -127,7 +128,7 @@ static NSString *contentViewCellId = @"content.tableview.cell";
             [self.calendarView updatePageWithNewDate:YES];
         };
         
-        contentCell.backgroundColor = [UIColor colorWithRed:(0x90 / 255.0)green:(0x90 / 255.0)blue:(0x90 / 255.0)alpha:1];
+        contentCell.backgroundColor = [UIColor whiteColor];
         contentCell.cellCollectionView.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 30);
         [contentCell.cellCollectionView reloadData];
         
@@ -153,6 +154,13 @@ static NSString *contentViewCellId = @"content.tableview.cell";
 {
     if (tableView==self.leftTableView) {
         return;
+    }
+    if (indexPath.row/2==1) {
+        tableView.separatorColor = [UIColor whiteColor];
+        tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    }else{
+        tableView.separatorColor = [UIColor clearColor];
+        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     ContentViewCell *willDisplayCell = (ContentViewCell *)cell;
     ContentViewCell *didDisplayCell = (ContentViewCell *)[tableView.visibleCells firstObject];

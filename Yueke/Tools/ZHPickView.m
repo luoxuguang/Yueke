@@ -150,7 +150,13 @@
     [self addSubview:pick];
     
     if (centerStr&&column==2) {
-        NSInteger hourRow = [items indexOfObject:[centerStr substringToIndex:2]];
+        NSInteger hour = [[centerStr substringToIndex:2] integerValue];
+        NSInteger hourRow = 0;
+        if (hour>=[[items firstObject] integerValue]&&hour<=[[items lastObject] integerValue]) {
+            hourRow = [items indexOfObject:[centerStr substringToIndex:2]];
+        }else{
+            hourRow = 0;
+        }
         NSInteger minRow = [[centerStr substringFromIndex:3] integerValue]>=30?1:0;
         if (isNext) {
             [pick selectRow:hourRow+1 inComponent:0 animated:YES];

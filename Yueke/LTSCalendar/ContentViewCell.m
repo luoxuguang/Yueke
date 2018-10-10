@@ -98,8 +98,8 @@
     LTSCalendarDayItem *item = self.daysInWeeks[indexPath.section][indexPath.row];
     
     innerCell.backgroundColor = [UIColor colorWithHex:0xf8f8f8];
-    innerCell.layer.borderColor = [UIColor whiteColor].CGColor;
-    innerCell.layer.borderWidth = 1;
+//    innerCell.layer.borderColor = [UIColor whiteColor].CGColor;
+//    innerCell.layer.borderWidth = 1;
     
     if ([[YKTool getTimeWithStr:@"YYYY-MMM-DD" Date:item.date] isEqualToString:[YKTool getTimeWithStr:@"YYYY-MMM-DD" Date:[NSDate date]]]) {
         innerCell.backgroundColor = [UIColor colorWithHex:0xccdff1];
@@ -127,8 +127,6 @@
         }
         
     }];
-    
-    
     
     return innerCell;
 }

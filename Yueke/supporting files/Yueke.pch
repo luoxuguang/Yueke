@@ -33,7 +33,8 @@ typedef NS_ENUM(NSUInteger, ADDTYPE) {
  * api
  */
 //#define BaseUrl @"http://198.181.46.158:8080/gym"
-#define BaseUrl @"http://172.16.12.85:8089"
+//#define BaseUrl @"http://172.16.12.85:8089"
+#define BaseUrl @"http://localhost:8089"
 #define API_login @"/login" //登录
 #define API_logout @"/logOut" //退出登录
 #define API_register @"/register" //注册
@@ -48,7 +49,7 @@ typedef NS_ENUM(NSUInteger, ADDTYPE) {
 #define API_addCourseForUser @"/addCourseForUser" //约课
 
 
-#define NUMBER_PAGES_LOADED 3
+#define NUMBER_PAGES_LOADED 5
 
 #define LeftWidth 50
 
