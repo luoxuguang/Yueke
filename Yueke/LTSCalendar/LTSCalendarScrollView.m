@@ -58,8 +58,7 @@ static NSString *contentViewCellId = @"content.tableview.cell";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.estimatedRowHeight = 0;
-    self.tableView.rowHeight = 30;
-//    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     self.tableView.estimatedSectionHeaderHeight = 0;
     self.tableView.estimatedSectionFooterHeight = 0;
@@ -73,7 +72,6 @@ static NSString *contentViewCellId = @"content.tableview.cell";
     self.leftTableView.backgroundColor = self.backgroundColor;
     self.leftTableView.delegate = self;
     self.leftTableView.dataSource = self;
-    self.leftTableView.rowHeight = 30;
     self.leftTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.leftTableView.estimatedRowHeight = 0;
     self.leftTableView.estimatedSectionHeaderHeight = 0;
@@ -119,9 +117,9 @@ static NSString *contentViewCellId = @"content.tableview.cell";
             }
             self.calendarView.collectionView.contentOffset = scroll.contentOffset;
         };
-        contentCell.cellDidSelectBlock = ^(LTSCalendarDayItem *item) {
+        contentCell.cellDidSelectBlock = ^(EventModel *model) {
             if (self.addCurseBlock) {
-                self.addCurseBlock(item);
+                self.addCurseBlock(model);
             }
         };
         contentCell.contentViewCellDidEndDeceleratingBlock = ^(UIScrollView *scroll) {
@@ -146,21 +144,18 @@ static NSString *contentViewCellId = @"content.tableview.cell";
     }
     return cell;
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row%2==1) {
+        return 32;
+    }
+    return 30;
 }
+
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableView==self.leftTableView) {
         return;
-    }
-    if (indexPath.row/2==1) {
-        tableView.separatorColor = [UIColor whiteColor];
-        tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    }else{
-        tableView.separatorColor = [UIColor clearColor];
-        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     ContentViewCell *willDisplayCell = (ContentViewCell *)cell;
     ContentViewCell *didDisplayCell = (ContentViewCell *)[tableView.visibleCells firstObject];

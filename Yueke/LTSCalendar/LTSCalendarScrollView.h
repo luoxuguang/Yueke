@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "LTSCalendarContentView.h"
 #import "LTSCalendarWeekDayView.h"
-#import "LTSCalendarDayItem.h"
+#import "EventModel.h"
 
 @interface LTSCalendarScrollView : UIScrollView
 @property (nonatomic,strong)UITableView *tableView;
@@ -20,7 +20,7 @@
 
 @property (nonatomic,strong) NSArray *Events;
 
-@property (nonatomic,copy) void (^addCurseBlock)(LTSCalendarDayItem *item);
+@property (nonatomic,copy) void (^addCurseBlock)(EventModel *model);
 
 
 - (void)scrollToSingleWeek;

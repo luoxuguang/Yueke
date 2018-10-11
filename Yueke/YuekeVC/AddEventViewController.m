@@ -9,7 +9,7 @@
 #import "AddEventViewController.h"
 #import "ZHPickView.h"
 #import "SelStudentsViewController.h"
-@interface AddEventViewController () <UITableViewDelegate,UITableViewDataSource>
+@interface AddEventViewController () <UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong) UITextField *nameField;
@@ -20,6 +20,7 @@
 @property (nonatomic,strong) UITextField *startDateField;
 @property (nonatomic,strong) UITextField *endDateField;
 
+@property (nonatomic,strong) NSMutableArray *dataArr; //日期数组
 @property (nonatomic,strong) NSMutableArray *studentArr;
 @property (nonatomic,strong) NSMutableArray *storeArr;
 @property (nonatomic,strong) NSMutableArray *courseArr;
@@ -34,13 +35,48 @@
     
     self.navigationItem.title = @"添加课程";
     self.view.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:self.tableView];
-    _hour = [YKTool getTimeWithStr:@"HH:mm" Date:[NSDate date]];
-    self.dateField.text = [YKTool getTimeWithStr:@"YYYY-MM-dd" Date:self.item.date];
     
+    if (!self.model.relid) {
+        self.dateField.text = [YKTool getTimeWithStr:@"YYYY-MM-dd" Date:self.model.startDate];
+        self.startDateField.text = [NSString stringWithFormat:@"%@",self.dataArr[self.model.cellNum]];
+        self.endDateField.text = [NSString stringWithFormat:@"%ld%@",[[self.startDateField.text substringToIndex:2] integerValue]+1,[self.startDateField.text substringFromIndex:2]];
+        _hour = self.startDateField.text;
+    }else{
+        _hour = [YKTool getTimeWithStr:@"HH:mm" Date:self.model.startDate];
+        self.nameField.text = self.model.username;
+        self.storeField.text = self.model.storeName;
+        self.courseField.text = self.model.courseName;
+        self.dateField.text = [YKTool getTimeWithStr:@"YYYY-MM-dd" Date:self.model.startDate];
+        self.startDateField.text =  _hour;
+        self.endDateField.text = [YKTool getTimeWithStr:@"HH:mm" Date:self.model.endDate];
+        UIBarButtonItem *todayItem = [[UIBarButtonItem alloc] initWithTitle:@"删除" style:UIBarButtonItemStylePlain target:self action:@selector(deleteClicked:)];
+        todayItem.tintColor = [UIColor whiteColor];
+        self.navigationItem.rightBarButtonItem = todayItem;
+    }
+    
+    [self.view addSubview:self.tableView];
     [self requestData];
 }
-
+-(void)deleteClicked:(UIBarButtonItem *)item{
+    UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"确定删除此次约课吗？" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert show];
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex ==1) {
+        NSDictionary *param = @{@"token":user_token,@"relid":self.model.relid};
+        [BasicNetWorking POST:[NSString stringWithFormat:@"%@%@",BaseUrl,API_delCourseForUser] parameters:param success:^(id responseObject) {
+            if (self.ADDSUCCESSBLOCK) {
+                self.ADDSUCCESSBLOCK();
+            }
+            [JohnAlertManager showAlertWithType:JohnTopAlertTypeSuccess title:@"约课删除成功！"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.navigationController popViewControllerAnimated:YES];
+            });
+        } failure:^(NSError *error) {
+            
+        }];
+    }
+}
 -(void)requestData{
     [MBProgressHUD showMessage:@"正在初始化数据..." toView:self.view];
     //查询所有门店
@@ -61,6 +97,9 @@
     [BasicNetWorking POST:[NSString stringWithFormat:@"%@%@",BaseUrl,API_allCourse] parameters:param success:^(id responseObject) {
         dispatch_group_leave(group);
         self.courseArr = [NSMutableArray arrayWithArray:responseObject];
+        if (self.courseArr.count) {
+            self.courseField.text = [[[self.courseArr firstObject] objectForKey:@"name"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        }
     } failure:^(NSError *error) {
         
     }];
@@ -109,12 +148,27 @@
                             @"startdate":startDate,
                             @"enddate":endDate
                             };
+    if (self.model.relid) {
+        param = @{@"token":user_token,
+                  @"userId":userId,
+                  @"courseId":courseId,
+                  @"collegeid":storeId,
+                  @"startdate":startDate,
+                  @"relid":self.model.relid,
+                  @"enddate":endDate
+                  };
+    }
     [BasicNetWorking POST:[NSString stringWithFormat:@"%@%@",BaseUrl,API_addCourseForUser] parameters:param success:^(id responseObject) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         if (self.ADDSUCCESSBLOCK) {
             self.ADDSUCCESSBLOCK();
         }
-        [JohnAlertManager showAlertWithType:JohnTopAlertTypeSuccess title:@"约课添加成功！"];
+        if (self.model.relid) {
+            [JohnAlertManager showAlertWithType:JohnTopAlertTypeSuccess title:@"约课修改成功！"];
+        }else{
+            [JohnAlertManager showAlertWithType:JohnTopAlertTypeSuccess title:@"约课添加成功！"];
+        }
+        
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.navigationController popViewControllerAnimated:YES];
         });
@@ -293,7 +347,12 @@
         UIButton *saveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         saveBtn.frame = CGRectMake(30, 5, ScreenWidth-60, 45);
         [saveBtn addTarget:self action:@selector(addCurse) forControlEvents:UIControlEventTouchUpInside];
-        [saveBtn setTitle:@"保存" forState:UIControlStateNormal];
+        if (self.model.relid) {
+           [saveBtn setTitle:@"修改" forState:UIControlStateNormal];
+        }else{
+            [saveBtn setTitle:@"保存" forState:UIControlStateNormal];
+        }
+        
         [saveBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [saveBtn setBackgroundColor:BlueColor];
         UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 55)];
@@ -403,5 +462,11 @@
         _storeArr = [[NSMutableArray alloc]init];
     }
     return _storeArr;
+}
+-(NSMutableArray *)dataArr{
+    if (!_dataArr) {
+        _dataArr = [[NSMutableArray alloc]initWithObjects:@"9:00",@"9:30",@"10:00",@"10:30",@"11:00",@"11:30",@"12:00",@"12:30",@"13:00",@"13:30",@"14:00",@"14:30",@"15:00",@"15:30",@"16:00",@"16:30",@"17:00",@"17:30",@"18:00",@"18:30",@"19:00",@"19:30",@"20:00",@"20:30",@"21:00",@"21:30",@"22:00", nil];
+    }
+    return _dataArr;
 }
 @end

@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "LTSCalendarDayItem.h"
+#import "EventModel.h"
 typedef NSString *(^cellForItemAtIndexPathBlock)(NSIndexPath *indexPath);
 typedef NSInteger(^numberOfItemsInSectionBlock)(NSInteger section);
 typedef CGSize(^sizeForItemAtIndexPathBlock)(UICollectionViewLayout * collectionViewLayout, NSIndexPath *indexPath);
 typedef void(^ContentViewCellDidScrollBlock)(UIScrollView *scroll);
 typedef void(^ContentViewCellDidEndDeceleratingBlock)(UIScrollView *scroll);
 typedef BOOL(^cellWithColorAtIndexPathBlock)(NSIndexPath *indexPath);
-typedef void(^didSelectItemBlock)(LTSCalendarDayItem *item);
+typedef void(^didSelectItemBlock)(EventModel *model);
 
 @interface ContentViewCell : UITableViewCell
 

@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LTSCalendarDayItem.h"
+#import "EventModel.h"
 @interface AddEventViewController : UIViewController
 
-@property (nonatomic,strong) LTSCalendarDayItem *item;
+@property (nonatomic,strong) EventModel *model;
 @property (nonatomic,copy) void (^ADDSUCCESSBLOCK)(void);
 @end

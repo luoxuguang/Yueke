@@ -8,7 +8,15 @@
 
 #import "ContentViewCell.h"
 
-#import "EventModel.h"
+
+
+typedef NS_ENUM(NSInteger, UIViewBorderLineType) {
+    UIViewBorderLineTypeTop,
+    UIViewBorderLineTypeRight,
+    UIViewBorderLineTypeBottom,
+    UIViewBorderLineTypeLeft,
+};
+
 
 @interface ContentViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -29,7 +37,7 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.minimumLineSpacing = 0.0;
-        layout.minimumInteritemSpacing = 0;
+        layout.minimumInteritemSpacing = 5;
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         self.cellCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) collectionViewLayout:layout];
         self.cellCollectionView.showsHorizontalScrollIndicator = NO;
@@ -98,15 +106,24 @@
     LTSCalendarDayItem *item = self.daysInWeeks[indexPath.section][indexPath.row];
     
     innerCell.backgroundColor = [UIColor colorWithHex:0xf8f8f8];
-//    innerCell.layer.borderColor = [UIColor whiteColor].CGColor;
-//    innerCell.layer.borderWidth = 1;
+    [self setViewBorder:innerCell color:[UIColor whiteColor] border:1 type:UIViewBorderLineTypeLeft];
+    [self setViewBorder:innerCell color:[UIColor whiteColor] border:1 type:UIViewBorderLineTypeRight];
     
     if ([[YKTool getTimeWithStr:@"YYYY-MMM-DD" Date:item.date] isEqualToString:[YKTool getTimeWithStr:@"YYYY-MMM-DD" Date:[NSDate date]]]) {
         innerCell.backgroundColor = [UIColor colorWithHex:0xccdff1];
     }
-    [self.Events enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        EventModel *model = (EventModel *)obj;
-        
+   
+    if ([self isRedWithItem:item]) {
+        EventModel *model = [self isRedWithItem:item];
+        innerCell.backgroundColor = [UIColor redColor];
+        label.text = model.username;
+    }
+    return innerCell;
+}
+
+//判断当前cell是否有约课
+-(EventModel *)isRedWithItem:(LTSCalendarDayItem *)item{
+    for (EventModel *model in self.Events) {
         if ([[YKTool getYMDWithdate:model.startDate] isEqualToString: [YKTool getYMDWithdate:item.date]]) {
             NSInteger min = 0;
             NSInteger max = 0;
@@ -121,23 +138,65 @@
                 max = ([YKTool getHourWithdate:model.endDate]-9)*2-1;
             }
             if (self.CellNum>=min&&self.CellNum<=max) {
-                innerCell.backgroundColor = [UIColor redColor];
-                label.text = model.username;
+                return model;
             }
         }
-        
-    }];
-    
-    return innerCell;
+    }
+    return nil;
 }
 
 
+-(void)setViewBorder:(UIView *)view color:(UIColor *)color border:(float)border type:(UIViewBorderLineType)borderLineType{
+    CALayer *lineLayer = [CALayer layer];
+    lineLayer.backgroundColor = color.CGColor;
+    switch (borderLineType) {
+        case UIViewBorderLineTypeTop:{
+            lineLayer.frame = CGRectMake(0, 0, view.frame.size.width, border);
+            break;
+            
+        }
+        case UIViewBorderLineTypeRight:{
+            lineLayer.frame = CGRectMake(view.frame.size.width, 0, border, view.frame.size.height);
+            break;
+            
+        }
+        case UIViewBorderLineTypeBottom:{
+            lineLayer.frame = CGRectMake(0, view.frame.size.height, view.frame.size.width,border);
+            break;
+            
+        }
+        case UIViewBorderLineTypeLeft:{
+            lineLayer.frame = CGRectMake(0, 0, border, view.frame.size.height);
+            break;
+            
+        }
+        default:{
+            lineLayer.frame = CGRectMake(0, 0, view.frame.size.width-42, border);
+            break;
+            
+        }
+            
+    }
+    [view.layer addSublayer:lineLayer];
+    
+}
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     LTSCalendarDayItem *item = self.daysInWeeks[indexPath.section][indexPath.row];
-    if (self.cellDidSelectBlock) {
-        self.cellDidSelectBlock(item);
+    if ([self isRedWithItem:item]) {
+        EventModel *model = [self isRedWithItem:item];
+        if (self.cellDidSelectBlock) {
+            self.cellDidSelectBlock(model);
+        }
+    }else{
+        EventModel *model = [[EventModel alloc]init];
+        model.cellNum = self.CellNum;
+        model.startDate = item.date;
+        if (self.cellDidSelectBlock) {
+            self.cellDidSelectBlock(model);
+        }
     }
+    
 }
 
 

@@ -43,9 +43,11 @@
             EventModel *model = [[EventModel alloc]init];
             model.startDate = [NSDate dateWithTimeIntervalSince1970:[[NSString stringWithFormat:@"%@",[obj objectForKey:@"startDate"]] longLongValue]/1000];
             model.endDate = [NSDate dateWithTimeIntervalSince1970:[[NSString stringWithFormat:@"%@",[obj objectForKey:@"endDate"]] longLongValue]/1000];
-            model.storeName = [NSString stringWithFormat:@"%@",[[obj objectForKey:@"dateCollege"] objectForKey:@"collegename"]];
+            model.storeName = [NSString stringWithFormat:@"%@",[[[obj objectForKey:@"dateCollege"] objectForKey:@"collegename"]stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+            model.courseName = [NSString stringWithFormat:@"%@",[[obj objectForKey:@"name"]stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
             model.storeId = [NSString stringWithFormat:@"%@",[[obj objectForKey:@"dateCollege"] objectForKey:@"fid"]];
             model.userId = [NSString stringWithFormat:@"%@",[[obj objectForKey:@"dateUser"] objectForKey:@"fid"]];
+            model.relid = [NSString stringWithFormat:@"%@",[obj objectForKey:@"relid"]];
             model.username = [NSString stringWithFormat:@"%@",[[[obj objectForKey:@"dateUser"] objectForKey:@"name"]stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
             [mulArr addObject:model];
         }];
@@ -75,10 +77,10 @@
     
     self.manager.calenderScrollView = [[LTSCalendarScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.manager.weekDayView.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)-CGRectGetMaxY(self.manager.weekDayView.frame)-SafeAreaTopHeight+10)];
     @weakify(self)
-    self.manager.calenderScrollView.addCurseBlock = ^(LTSCalendarDayItem *item) {
+    self.manager.calenderScrollView.addCurseBlock = ^(id model) {
         @strongify(self)
         AddEventViewController *addVc =[[AddEventViewController alloc]init];
-        addVc.item = item;
+        addVc.model = model;
         addVc.hidesBottomBarWhenPushed = YES;
         addVc.ADDSUCCESSBLOCK = ^{
             [self.manager.calenderScrollView.tableView.mj_header beginRefreshing];

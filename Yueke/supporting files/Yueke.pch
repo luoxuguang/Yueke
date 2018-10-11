@@ -32,9 +32,11 @@ typedef NS_ENUM(NSUInteger, ADDTYPE) {
 /*
  * api
  */
-//#define BaseUrl @"http://198.181.46.158:8080/gym"
+#define BaseUrl @"http://198.181.46.158:8080/gym"
 //#define BaseUrl @"http://172.16.12.85:8089"
-#define BaseUrl @"http://localhost:8089"
+//#define BaseUrl @"http://localhost:8089"
+//#define BaseUrl @"http://66eb66da.ngrok.io"
+
 #define API_login @"/login" //登录
 #define API_logout @"/logOut" //退出登录
 #define API_register @"/register" //注册
@@ -43,6 +45,7 @@ typedef NS_ENUM(NSUInteger, ADDTYPE) {
 #define API_addCourse @"/addCourse" //添加课程
 #define API_addStore @"/addStore" //添加门店
 #define API_deleteUser @"/deleteUser" //删除学员
+#define API_delCourseForUser @"/delCourseForUser" //删除约课
 #define API_allCourse @"/findCourse" //查询所有的课程
 #define API_allStore @"/findStore" //查询所有的门店
 
