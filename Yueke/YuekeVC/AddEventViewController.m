@@ -120,25 +120,34 @@
 }
 
 -(void)addCurse{
+    
+    if (self.nameField.text==nil||self.nameField.text.length==0) {
+        [JohnAlertManager showAlertWithType:JohnTopAlertTypeError title:@"请选择学员！"];
+        return;
+    }
     [MBProgressHUD showMessage:@"请稍后..." toView:self.view];
-    __block NSString *userId = nil;
-    [self.studentArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    NSString *userId = nil;
+    for (NSDictionary *obj in self.studentArr) {
         if ([[[obj objectForKey:@"name"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding] isEqualToString:self.nameField.text]) {
             userId = [obj objectForKey:@"fid"];
+            break;
         }
-    }];
-    __block NSString *storeId = nil;
-    [self.storeArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    }
+    
+    NSString *storeId = nil;
+    for (NSDictionary *obj in self.storeArr) {
         if ([[[obj objectForKey:@"collegename"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding] isEqualToString:self.storeField.text]) {
             storeId = [obj objectForKey:@"fid"];
         }
-    }];
-    __block NSString *courseId = nil;
-    [self.courseArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    }
+    
+    NSString *courseId = nil;
+    for (NSDictionary *obj in self.courseArr) {
         if ([[[obj objectForKey:@"name"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding] isEqualToString:self.courseField.text]) {
             courseId = [obj objectForKey:@"fid"];
         }
-    }];
+    }
+    
     NSString *startDate = [YKTool nsstringConversionNSDate:[NSString stringWithFormat:@"%@ %@:00",self.dateField.text,self.startDateField.text]];
     NSString *endDate = [YKTool nsstringConversionNSDate:[NSString stringWithFormat:@"%@ %@:00",self.dateField.text,self.endDateField.text]];
     NSDictionary *param = @{@"token":user_token,
