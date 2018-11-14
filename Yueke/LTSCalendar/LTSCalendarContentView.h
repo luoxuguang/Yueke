@@ -16,7 +16,7 @@
 
 @property (nonatomic,strong) UICollectionView *collectionView;
 
-
+@property (nonatomic,copy) void (^CollectionViewEndScrollBlock)(UIScrollView *scrollView);
 @property (nonatomic,copy) void (^CollectionViewScrollBlock)(UIScrollView *scrollView);
 //遮罩
 @property (nonatomic,strong)UIView *maskView;

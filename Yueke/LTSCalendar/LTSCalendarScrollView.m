@@ -41,11 +41,14 @@ static NSString *contentViewCellId = @"content.tableview.cell";
     LTSCalendarContentView *calendarView = [[LTSCalendarContentView alloc]initWithFrame:CGRectMake(LeftWidth, 0, self.frame.size.width-LeftWidth, [LTSCalendarAppearance share].weekDayHeight*[LTSCalendarAppearance share].weeksToDisplay)];
     calendarView.CollectionViewScrollBlock = ^(UIScrollView *scrollView) {
         if ([scrollView isKindOfClass:[UICollectionView class]]) {
-            [self.tableView reloadData];
+//            [self.tableView reloadData];
             for (ContentViewCell *cell in self.tableView.visibleCells) {
                 cell.cellCollectionView.contentOffset = scrollView.contentOffset;
             }
         }
+    };
+    calendarView.CollectionViewEndScrollBlock = ^(UIScrollView *scrollView) {
+        [self.tableView reloadData];
     };
     calendarView.eventSource = self;
     calendarView.currentDate = [NSDate date];

@@ -55,9 +55,6 @@
 
 - (void)initUI
 {
-    
-    
-    
     self.flowLayout = [LTSCalendarCollectionViewFlowLayout new];
     self.flowLayout.itemSize = CGSizeMake(self.frame.size.width/7, [LTSCalendarAppearance share].weekDayHeight);
     self.flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
@@ -212,7 +209,9 @@
 //点击滑动
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
-    
+    if (self.CollectionViewEndScrollBlock) {
+        self.CollectionViewEndScrollBlock(scrollView);
+    }
    [self updatePageWithNewDate:!isOwnChangePage];
     [UIView performWithoutAnimation:^{
         [self.collectionView reloadData];
@@ -250,6 +249,9 @@
     [UIView performWithoutAnimation:^{
         [self.collectionView reloadData];
     }];
+    if (self.CollectionViewEndScrollBlock) {
+        self.CollectionViewEndScrollBlock(scrollView);
+    }
     if (self.eventSource && [self.eventSource respondsToSelector:@selector(calendarDidLoadPageCurrentDate:)]) {
         [self.eventSource calendarDidLoadPageCurrentDate:self.currentDate];
     }
