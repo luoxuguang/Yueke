@@ -14,4 +14,5 @@ target 'Yueke' do
     pod 'SAMKeychain'
     pod 'IQKeyboardManager'
     pod 'Popover.OC'
+    pod 'CWLateralSlide', '~> 1.6.3'
 end

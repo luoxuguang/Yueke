@@ -11,7 +11,7 @@
 #import "HJLoginExample03_VC.h"
 #import "BaseNavigationController.h"
 #import <IQKeyboardManager.h>
-
+#import "ViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -25,8 +25,8 @@
     
     BOOL islogin = [[NSUserDefaults standardUserDefaults]boolForKey:@"isLogin"];
     if (islogin) {
-        BaseTabbarController *tabbar = [[BaseTabbarController alloc]init];
-        self.window.rootViewController = tabbar;
+        BaseNavigationController *nav = [[BaseNavigationController alloc]initWithRootViewController:[ViewController new]];
+        self.window.rootViewController = nav;
     }else{
         HJLoginExample03_VC *login = [[HJLoginExample03_VC alloc]init];
         login.isLogin = YES;

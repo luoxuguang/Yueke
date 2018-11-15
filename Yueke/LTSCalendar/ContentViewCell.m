@@ -51,7 +51,6 @@ typedef NS_ENUM(NSInteger, UIViewBorderLineType) {
         [self.cellCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"inner.cell"];
         self.cellCollectionView.dataSource = self;
         self.cellCollectionView.delegate = self;
-        
         [self.contentView addSubview:self.cellCollectionView];
     }
     
@@ -103,7 +102,7 @@ typedef NS_ENUM(NSInteger, UIViewBorderLineType) {
     label.font = [UIFont systemFontOfSize:11.0];
     label.textAlignment = NSTextAlignmentCenter;
     [innerCell.contentView addSubview:label];
-    LTSCalendarDayItem *item = self.daysInWeeks[indexPath.section][indexPath.row];
+    LTSCalendarDayItem *item = self.calendarView.daysInWeeks[indexPath.section][indexPath.row];
     
     innerCell.backgroundColor = [UIColor colorWithHex:0xf8f8f8];
     [self setViewBorder:innerCell color:[UIColor whiteColor] border:1 type:UIViewBorderLineTypeLeft];
@@ -120,6 +119,8 @@ typedef NS_ENUM(NSInteger, UIViewBorderLineType) {
     }
     return innerCell;
 }
+
+
 
 //判断当前cell是否有约课
 -(EventModel *)isRedWithItem:(LTSCalendarDayItem *)item{
@@ -182,7 +183,7 @@ typedef NS_ENUM(NSInteger, UIViewBorderLineType) {
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    LTSCalendarDayItem *item = self.daysInWeeks[indexPath.section][indexPath.row];
+    LTSCalendarDayItem *item = self.calendarView.daysInWeeks[indexPath.section][indexPath.row];
     if ([self isRedWithItem:item]) {
         EventModel *model = [self isRedWithItem:item];
         if (self.cellDidSelectBlock) {

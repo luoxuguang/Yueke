@@ -10,6 +10,8 @@
 #import "LTSCalendarManager.h"
 #import "EventModel.h"
 #import "AddEventViewController.h"
+#import <UIViewController+CWLateralSlide.h>
+#import "LeftViewController.h"
 
 @interface ViewController ()<LTSCalendarEventSource>
 
@@ -18,7 +20,7 @@
 @property (nonatomic) BOOL isWeek;
 @property (nonatomic,strong)LTSCalendarManager *manager;
 @property (nonatomic,strong)UILabel *monthLabel;
-
+@property (nonatomic,strong) LeftViewController *leftVC; // 强引用，可以避免每次显示抽屉都去创建
 
 @end
 
@@ -30,13 +32,27 @@
     
     [self setupUI];
     
+    // 注册手势驱动
+    __weak typeof(self)weakSelf = self;
+    [self cw_registerShowIntractiveWithEdgeGesture:NO transitionDirectionAutoBlock:^(CWDrawerTransitionDirection direction) {
+        if (direction == CWDrawerTransitionFromLeft) { // 左侧滑出
+             [weakSelf defaultAnimationFromLeft];
+        }
+    }];
+    
     [self.manager.calenderScrollView.tableView.mj_header beginRefreshing];
 }
-
+// 仿QQ从左侧划出
+- (void)defaultAnimationFromLeft {
+    
+    // 强引用leftVC，不用每次创建新的,也可以每次在这里创建leftVC，抽屉收起的时候会释放掉
+    [self cw_showDefaultDrawerViewController:self.leftVC];
+}
 -(void)requestData{
-
+    [MBProgressHUD showMessage:@"正在加载数据..." toView:self.view];
     NSDictionary *param = @{@"token":user_token,@"state":@"0"};
     [BasicNetWorking POST:[NSString stringWithFormat:@"%@%@",BaseUrl,API_allCourse] parameters:param success:^(id responseObject) {
+        [MBProgressHUD hideHUDForView:self.view];
         [self.manager.calenderScrollView.tableView.mj_header endRefreshing];
         NSMutableArray *mulArr = [[NSMutableArray alloc]init];
         [responseObject enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -55,6 +71,7 @@
         self.manager.calenderScrollView.Events =mulArr;
         
     } failure:^(NSError *error) {
+        [MBProgressHUD hideHUDForView:self.view];
         [self.manager.calenderScrollView.tableView.mj_header endRefreshing];
     }];
     
@@ -134,7 +151,12 @@
     }
     return _monthLabel;
 }
-
+- (LeftViewController *)leftVC {
+    if (_leftVC == nil) {
+        _leftVC = [LeftViewController new];
+    }
+    return _leftVC;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

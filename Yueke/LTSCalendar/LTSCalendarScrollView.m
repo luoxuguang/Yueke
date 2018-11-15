@@ -47,9 +47,9 @@ static NSString *contentViewCellId = @"content.tableview.cell";
             }
         }
     };
-    calendarView.CollectionViewEndScrollBlock = ^(UIScrollView *scrollView) {
-        [self.tableView reloadData];
-    };
+//    calendarView.CollectionViewEndScrollBlock = ^(UIScrollView *scrollView) {
+//        [self.tableView reloadData];
+//    };
     calendarView.eventSource = self;
     calendarView.currentDate = [NSDate date];
     [self addSubview:calendarView];
@@ -113,7 +113,7 @@ static NSString *contentViewCellId = @"content.tableview.cell";
         contentCell.Events = self.Events;
         contentCell.CellNum = indexPath.row;
         
-        
+        contentCell.calendarView = self.calendarView;
         contentCell.contentViewCellDidScrollBlock = ^(UIScrollView *scroll) {
             for (ContentViewCell *cell in self.tableView.visibleCells) {
                 cell.cellCollectionView.contentOffset = scroll.contentOffset;
@@ -128,11 +128,9 @@ static NSString *contentViewCellId = @"content.tableview.cell";
         contentCell.contentViewCellDidEndDeceleratingBlock = ^(UIScrollView *scroll) {
             [self.calendarView updatePageWithNewDate:YES];
         };
-        
+        [contentCell.cellCollectionView reloadData];
         contentCell.backgroundColor = [UIColor whiteColor];
         contentCell.cellCollectionView.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 30);
-        [contentCell.cellCollectionView reloadData];
-        
         return contentCell;
         
     }else{
@@ -161,6 +159,7 @@ static NSString *contentViewCellId = @"content.tableview.cell";
         return;
     }
     ContentViewCell *willDisplayCell = (ContentViewCell *)cell;
+    [willDisplayCell.cellCollectionView reloadData];
     ContentViewCell *didDisplayCell = (ContentViewCell *)[tableView.visibleCells firstObject];
     if (willDisplayCell.cellCollectionView && didDisplayCell.cellCollectionView && willDisplayCell.cellCollectionView.contentOffset.x != didDisplayCell.cellCollectionView.contentOffset.x) {
         willDisplayCell.cellCollectionView.contentOffset = didDisplayCell.cellCollectionView.contentOffset;

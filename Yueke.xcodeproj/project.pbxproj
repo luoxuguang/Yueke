@@ -40,6 +40,7 @@
 		B179F4D22150DB18009D70A5 /* BasicNetWorking.m in Sources */ = {isa = PBXBuildFile; fileRef = B179F4D12150DB18009D70A5 /* BasicNetWorking.m */; };
 		B179F4D52150DBCB009D70A5 /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = B179F4D42150DBCB009D70A5 /* MBProgressHUD+MJ.m */; };
 		B19D02802151F5AE0058BFF9 /* AddStudentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B19D027F2151F5AE0058BFF9 /* AddStudentVC.m */; };
+		B19E5248219D6433006BBC3C /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B19E5247219D6433006BBC3C /* LeftViewController.m */; };
 		EFD81A2A2142D08600C67EC3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81A292142D08600C67EC3 /* AppDelegate.m */; };
 		EFD81A2D2142D08600C67EC3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81A2C2142D08600C67EC3 /* ViewController.m */; };
 		EFD81A302142D08600C67EC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFD81A2E2142D08600C67EC3 /* Main.storyboard */; };
@@ -118,6 +119,8 @@
 		B179F4D42150DBCB009D70A5 /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MBProgressHUD+MJ.m"; path = "Yueke/Tools/MBProgressHUD+MJ.m"; sourceTree = SOURCE_ROOT; };
 		B19D027E2151F5AE0058BFF9 /* AddStudentVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddStudentVC.h; sourceTree = "<group>"; };
 		B19D027F2151F5AE0058BFF9 /* AddStudentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddStudentVC.m; sourceTree = "<group>"; };
+		B19E5246219D6433006BBC3C /* LeftViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
+		B19E5247219D6433006BBC3C /* LeftViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
 		C5777F407C05604F469166D2 /* libPods-Yueke.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Yueke.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFD81A252142D08600C67EC3 /* Yueke.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yueke.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFD81A282142D08600C67EC3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -332,6 +335,8 @@
 			children = (
 				EFD81A2B2142D08600C67EC3 /* ViewController.h */,
 				EFD81A2C2142D08600C67EC3 /* ViewController.m */,
+				B19E5246219D6433006BBC3C /* LeftViewController.h */,
+				B19E5247219D6433006BBC3C /* LeftViewController.m */,
 				B168FC7C214A669B006C65FD /* EventModel.h */,
 				B168FC7D214A669B006C65FD /* EventModel.m */,
 				B174D59E215DFAC90055820A /* AddEventViewController.h */,
@@ -497,6 +502,7 @@
 				EFD81ADE214400A100C67EC3 /* BaseTabbarController.m in Sources */,
 				EFD81AE12144011A00C67EC3 /* BaseNavigationController.m in Sources */,
 				B16A94A92148BCF60001F3B1 /* LTSCircleView.m in Sources */,
+				B19E5248219D6433006BBC3C /* LeftViewController.m in Sources */,
 				EFD81AE8214417AA00C67EC3 /* UIColor+util.m in Sources */,
 				EFD81A3B2142D08600C67EC3 /* main.m in Sources */,
 				B12912972150D3AA0039B06D /* NSArray+HJImages.m in Sources */,

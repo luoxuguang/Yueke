@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "LTSCalendarDayItem.h"
 #import "EventModel.h"
+#import "LTSCalendarContentView.h"
 typedef NSString *(^cellForItemAtIndexPathBlock)(NSIndexPath *indexPath);
 typedef NSInteger(^numberOfItemsInSectionBlock)(NSInteger section);
 typedef CGSize(^sizeForItemAtIndexPathBlock)(UICollectionViewLayout * collectionViewLayout, NSIndexPath *indexPath);
@@ -28,7 +29,7 @@ typedef void(^didSelectItemBlock)(EventModel *model);
 @property (nonatomic, strong) didSelectItemBlock cellDidSelectBlock;
 
 @property (nonatomic, strong) UICollectionView *cellCollectionView;
-
+@property (nonatomic,strong)LTSCalendarContentView *calendarView;
 
 @property (nonatomic,assign)NSInteger currentMonthIndex;
 @property (nonatomic,strong)NSArray *daysInMonth;
