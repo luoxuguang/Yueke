@@ -18,7 +18,8 @@
 #import <SAMKeychain.h>
 #import "JohnAlertManager.h"
 #import "YKTool.h"
-
+#import "TBCityIconFont.h"
+#import "UIImage+TBCityIconFont.h"
 
 
 typedef NS_ENUM(NSUInteger, ADDTYPE) {

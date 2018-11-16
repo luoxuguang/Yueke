@@ -37,7 +37,7 @@ typedef NS_ENUM(NSInteger, UIViewBorderLineType) {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.minimumLineSpacing = 0.0;
-        layout.minimumInteritemSpacing = 5;
+        layout.minimumInteritemSpacing = 0.0;
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         self.cellCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) collectionViewLayout:layout];
         self.cellCollectionView.showsHorizontalScrollIndicator = NO;
@@ -95,7 +95,7 @@ typedef NS_ENUM(NSInteger, UIViewBorderLineType) {
         }
     }
     CGFloat width = self.frame.size.width/7;
-    CGFloat height = 28;
+    CGFloat height = 30;
     CGRect rect = CGRectMake(0, 0, width, height);
     UILabel *label = [[UILabel alloc] initWithFrame:rect];
     label.textColor = [UIColor whiteColor];
@@ -103,10 +103,7 @@ typedef NS_ENUM(NSInteger, UIViewBorderLineType) {
     label.textAlignment = NSTextAlignmentCenter;
     [innerCell.contentView addSubview:label];
     LTSCalendarDayItem *item = self.calendarView.daysInWeeks[indexPath.section][indexPath.row];
-    
     innerCell.backgroundColor = [UIColor colorWithHex:0xf8f8f8];
-    [self setViewBorder:innerCell color:[UIColor whiteColor] border:1 type:UIViewBorderLineTypeLeft];
-    [self setViewBorder:innerCell color:[UIColor whiteColor] border:1 type:UIViewBorderLineTypeRight];
     
     if ([[YKTool getTimeWithStr:@"YYYY-MMM-DD" Date:item.date] isEqualToString:[YKTool getTimeWithStr:@"YYYY-MMM-DD" Date:[NSDate date]]]) {
         innerCell.backgroundColor = [UIColor colorWithHex:0xccdff1];

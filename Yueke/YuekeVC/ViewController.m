@@ -31,6 +31,7 @@
     [super viewDidLoad];
     
     [self setupUI];
+    self.view.backgroundColor = [UIColor  whiteColor];
     
     // 注册手势驱动
     __weak typeof(self)weakSelf = self;

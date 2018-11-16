@@ -21,6 +21,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [TBCityIconFont setFontName:@"iconfont"];
     [IQKeyboardManager sharedManager].enable = YES;
     
     BOOL islogin = [[NSUserDefaults standardUserDefaults]boolForKey:@"isLogin"];

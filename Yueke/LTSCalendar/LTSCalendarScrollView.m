@@ -146,9 +146,9 @@ static NSString *contentViewCellId = @"content.tableview.cell";
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row%2==1) {
-        return 32;
-    }
+//    if (indexPath.row%2==1) {
+//        return 32;
+//    }
     return 30;
 }
 
@@ -344,5 +344,8 @@ static NSString *contentViewCellId = @"content.tableview.cell";
 -(void)setEvents:(NSArray *)Events{
     _Events = Events;
     [self.tableView reloadData];
+    for (ContentViewCell *cell in self.tableView.visibleCells) {
+        cell.cellCollectionView.contentOffset = self.calendarView.collectionView.contentOffset;
+    }
 }
 @end
