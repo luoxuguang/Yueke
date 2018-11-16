@@ -98,20 +98,20 @@ typedef NS_ENUM(NSInteger, UIViewBorderLineType) {
     CGFloat height = 30;
     CGRect rect = CGRectMake(0, 0, width, height);
     UILabel *label = [[UILabel alloc] initWithFrame:rect];
-    label.textColor = [UIColor whiteColor];
+    label.textColor = [UIColor colorWithHex:0x005555];
     label.font = [UIFont systemFontOfSize:11.0];
     label.textAlignment = NSTextAlignmentCenter;
     [innerCell.contentView addSubview:label];
     LTSCalendarDayItem *item = self.calendarView.daysInWeeks[indexPath.section][indexPath.row];
     innerCell.backgroundColor = [UIColor colorWithHex:0xf8f8f8];
     
-    if ([[YKTool getTimeWithStr:@"YYYY-MMM-DD" Date:item.date] isEqualToString:[YKTool getTimeWithStr:@"YYYY-MMM-DD" Date:[NSDate date]]]) {
-        innerCell.backgroundColor = [UIColor colorWithHex:0xccdff1];
-    }
+//    if ([[YKTool getTimeWithStr:@"YYYY-MMM-DD" Date:item.date] isEqualToString:[YKTool getTimeWithStr:@"YYYY-MMM-DD" Date:[NSDate date]]]) {
+//        innerCell.backgroundColor = [UIColor colorWithHex:0xccdff1];
+//    }
    
-    if ([self isRedWithItem:item]) {
+    if ([self isRedWithItem:item]) {//
         EventModel *model = [self isRedWithItem:item];
-        innerCell.backgroundColor = [UIColor redColor];
+        innerCell.backgroundColor = [UIColor colorWithHex:GreenColor];
         label.text = model.username;
     }
     return innerCell;

@@ -61,9 +61,11 @@
     self.lunarDayTextColorSelected = [UIColor whiteColor];
     
     
-    self.dayBorderColorToday = [UIColor colorWithRed:133./256. green:205./256. blue:243./256. alpha:1.];
-    self.dayCircleColorSelected  = [UIColor colorWithRed:133./256. green:205./256. blue:243./256. alpha:1.];
-    self.dayCircleColorToday = [UIColor colorWithRed:133./256. green:205./256. blue:243./256. alpha:1.];
+//    self.dayBorderColorToday = [UIColor colorWithRed:133./256. green:205./256. blue:243./256. alpha:1.];
+    self.dayCircleColorSelected  = [UIColor colorWithHex:GreenColor];
+//    self.dayCircleColorToday = [UIColor colorWithRed:133./256. green:205./256. blue:243./256. alpha:1.];
+    self.dayCircleColorToday = [UIColor colorWithHex:GreenColor];
+       self.dayBorderColorToday = [UIColor colorWithHex:GreenColor];
     self.dayTextColorToday = [UIColor whiteColor];
     self.dayDotColor = [UIColor redColor];
   

@@ -61,7 +61,6 @@ static NSString *contentViewCellId = @"content.tableview.cell";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.estimatedRowHeight = 0;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     self.tableView.estimatedSectionHeaderHeight = 0;
     self.tableView.estimatedSectionFooterHeight = 0;
@@ -131,6 +130,11 @@ static NSString *contentViewCellId = @"content.tableview.cell";
         [contentCell.cellCollectionView reloadData];
         contentCell.backgroundColor = [UIColor whiteColor];
         contentCell.cellCollectionView.frame = CGRectMake(0, 0, self.tableView.frame.size.width, 30);
+        if (indexPath.row%2==1) {
+            contentCell.separatorInset = UIEdgeInsetsZero;
+        }else{
+            contentCell.separatorInset = UIEdgeInsetsMake(0, self.frame.size.width, 0, 0);
+        }
         return contentCell;
         
     }else{

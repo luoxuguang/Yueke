@@ -7,7 +7,6 @@
 //
 
 #import "LeftViewController.h"
-#import "LeftViewCell.h"
 
 #define kTBCityIconXUEYUAN TBCityIconInfoMake(@"\U0000e62c", 24, [UIColor blackColor])
 #define kTBCityIconSTORE TBCityIconInfoMake(@"\U0000e62c", 24, [UIColor blackColor])
@@ -15,6 +14,8 @@
 @interface LeftViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong) UITableView *tableView;
+@property (nonatomic,strong) UIView *headView;
+@property (nonatomic,strong) UIButton *exitBtn;
 @property (nonatomic,strong) NSArray *dataArr;
 @end
 
@@ -27,14 +28,23 @@
     
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.view).offset(50);
-        make.left.right.mas_equalTo(self.view).offset(0);
+        make.top.mas_equalTo(self.view).offset(20);
+        make.left.mas_equalTo(self.view).offset(30);
+        make.width.mas_equalTo(self.view);
         make.bottom.mas_equalTo(self.view).offset(-50);
     }];
     
-    self.dataArr = @[@{@"icon":kTBCityIconXUEYUAN,@"name":@"学员管理"},
-                     @{@"icon":kTBCityIconSTORE,@"name":@"门店管理"},
-                     @{@"icon":kTBCityIconKECHENG,@"name":@"课程管理"}
+    [self.view addSubview:self.exitBtn];
+    [self.exitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(self.view.mas_bottom).offset(-50);
+        make.left.mas_equalTo(self.view).offset(30);
+        make.width.mas_equalTo(100);
+        make.height.mas_equalTo(40);
+        
+    }];
+    self.dataArr = @[@{@"icon":@"iconfont_学员",@"name":@"学员管理"},
+                     @{@"icon":@"iconfont_门店",@"name":@"门店管理"},
+                     @{@"icon":@"iconfont_课程",@"name":@"课程管理"}
                      ];
 }
 
@@ -45,15 +55,17 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    LeftViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LeftViewCell"];
-    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"LeftViewCell" owner:self options:nil];
-    if ([nib count]>0)
-    {
-        cell = [nib objectAtIndex:0];
+
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-    NSDictionary *dict = self.dataArr [indexPath.row];
-    [cell showWithDic:dict];
     
+    NSDictionary *dict = self.dataArr [indexPath.row];
+    cell.imageView.image = [UIImage imageNamed:[dict objectForKey:@"icon"]];
+    cell.textLabel.text = [dict objectForKey:@"name"];
+    cell.textLabel.font = [UIFont systemFontOfSize:14.0];
+    cell.textLabel.textColor = [UIColor colorWithHex:0x666666];
     return cell;
 }
 
@@ -64,13 +76,39 @@
         _tableView = [[UITableView alloc]init];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.rowHeight = 65;
+        _tableView.tableHeaderView = self.headView;
         _tableView.tableFooterView = [UIView new];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _tableView;
 }
-
-
+-(UIView *)headView{
+    if (!_headView) {
+        _headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth-50, 240)];
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 100, 80, 80)];
+        imageView.layer.masksToBounds = YES;
+        imageView.layer.cornerRadius = 40;
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        imageView.image = [UIImage imageNamed:@"avator.jpeg"];
+        [_headView addSubview:imageView];
+        
+        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(90, 100, _headView.frame.size.width-115, 80)];
+        label.text = @"C-GO Fitness";
+        [_headView addSubview:label];
+    }
+    return _headView;
+}
+-(UIButton *)exitBtn{
+    if (!_exitBtn) {
+        _exitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_exitBtn setTitle:@"退出登录" forState:UIControlStateNormal];
+        [_exitBtn setTitleColor:[UIColor colorWithHex:0x999999] forState:UIControlStateNormal];
+        _exitBtn.titleLabel.textColor = [UIColor colorWithHex:0x999999];
+        _exitBtn.titleLabel.font = [UIFont systemFontOfSize:14.0];
+    }
+    return _exitBtn;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

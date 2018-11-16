@@ -81,9 +81,13 @@
 
 -(void)setupUI{
     self.navigationItem.title = @"约课";
-    UIBarButtonItem *todayItem = [[UIBarButtonItem alloc] initWithTitle:@"TODAY" style:UIBarButtonItemStylePlain target:self action:@selector(todayItemClicked:)];
-    todayItem.tintColor = [UIColor whiteColor];
+    UIBarButtonItem *todayItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"iconfont_日历"] style:UIBarButtonItemStylePlain target:self action:@selector(todayItemClicked:)];
+    todayItem.tintColor = [UIColor blackColor];
     self.navigationItem.rightBarButtonItem = todayItem;
+    UIBarButtonItem *menuItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"iconfont_菜单"] style:UIBarButtonItemStylePlain target:self action:@selector(defaultAnimationFromLeft)];
+    menuItem.tintColor = [UIColor blackColor];
+    self.navigationItem.leftBarButtonItem = menuItem;
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.manager = [LTSCalendarManager new];
@@ -118,6 +122,25 @@
     self.automaticallyAdjustsScrollViewInsets = false;
     
     [self.view addSubview:self.monthLabel];
+    
+    
+    UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    addBtn.frame = CGRectMake(10, ScreenHeight, 64, 64);
+    
+    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+    gradientLayer.frame = CGRectMake(0, 0, 64, 64);
+    gradientLayer.startPoint = CGPointMake(0, 0);
+    gradientLayer.endPoint = CGPointMake(1, 0);
+    gradientLayer.locations = @[@(0.5),@(1.0)];//渐变点
+    [gradientLayer setColors:@[[UIColor colorWithHex:0x95FFCF],[UIColor colorWithHex:0x08AEEA]]];//渐变数组
+    [addBtn.layer addSublayer:gradientLayer];
+    [addBtn setImage:[UIImage imageNamed:@"iconfont_添加"] forState:UIControlStateNormal];
+    [self.view addSubview:addBtn];
+    [addBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.manager.calenderScrollView.mas_bottom).offset(40);
+        make.centerX.mas_equalTo(self.view.mas_centerX);
+        make.width.height.mas_equalTo(64);
+    }];
     
 }
 

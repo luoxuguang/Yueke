@@ -65,7 +65,7 @@ typedef NS_ENUM(NSUInteger, ADDTYPE) {
 
 #define RGB(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]  //带有RGBA的颜色设置
 #define BlueColor  RGB(37, 94, 171, 1)
-
+#define GreenColor 0X96E6DC
 #define KEYCHAIN_SERVICE @"YUEKE_SERVCICE"
 #define user_token  [[NSUserDefaults standardUserDefaults]objectForKey:@"user_token"]?[[NSUserDefaults standardUserDefaults]objectForKey:@"user_token"]:@""
 

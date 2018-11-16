@@ -17,9 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationBar.barTintColor = BlueColor;
-    self.navigationBar.barStyle = UIBarStyleBlack;
-    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:20]}];
+//    self.navigationBar.barTintColor = [UIColor whiteColor];
+//    self.navigationBar.barStyle = UIBarStyleBlack;
+//    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:20]}];
     
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc]initWithTitle:@""
                                                                 style:UIBarButtonItemStylePlain

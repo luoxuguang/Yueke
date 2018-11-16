@@ -42,8 +42,6 @@
 		B179F4D52150DBCB009D70A5 /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = B179F4D42150DBCB009D70A5 /* MBProgressHUD+MJ.m */; };
 		B19D02802151F5AE0058BFF9 /* AddStudentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B19D027F2151F5AE0058BFF9 /* AddStudentVC.m */; };
 		B19E5248219D6433006BBC3C /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B19E5247219D6433006BBC3C /* LeftViewController.m */; };
-		B19E5252219E5A4F006BBC3C /* LeftViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B19E5250219E5A4F006BBC3C /* LeftViewCell.m */; };
-		B19E5253219E5A4F006BBC3C /* LeftViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B19E5251219E5A4F006BBC3C /* LeftViewCell.xib */; };
 		B19E5265219E6A7B006BBC3C /* TBCityIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = B19E525F219E6A7B006BBC3C /* TBCityIconFont.m */; };
 		B19E5266219E6A7B006BBC3C /* TBCityIconInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B19E5261219E6A7B006BBC3C /* TBCityIconInfo.m */; };
 		B19E5267219E6A7B006BBC3C /* UIImage+TBCityIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = B19E5264219E6A7B006BBC3C /* UIImage+TBCityIconFont.m */; };
@@ -127,9 +125,6 @@
 		B19D027F2151F5AE0058BFF9 /* AddStudentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddStudentVC.m; sourceTree = "<group>"; };
 		B19E5246219D6433006BBC3C /* LeftViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
 		B19E5247219D6433006BBC3C /* LeftViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
-		B19E524F219E5A4F006BBC3C /* LeftViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftViewCell.h; sourceTree = "<group>"; };
-		B19E5250219E5A4F006BBC3C /* LeftViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftViewCell.m; sourceTree = "<group>"; };
-		B19E5251219E5A4F006BBC3C /* LeftViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeftViewCell.xib; sourceTree = "<group>"; };
 		B19E5258219E65AF006BBC3C /* iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconfont.ttf; sourceTree = "<group>"; };
 		B19E525F219E6A7B006BBC3C /* TBCityIconFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBCityIconFont.m; sourceTree = "<group>"; };
 		B19E5260219E6A7B006BBC3C /* TBCityIconInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBCityIconInfo.h; sourceTree = "<group>"; };
@@ -368,9 +363,6 @@
 				EFD81A2C2142D08600C67EC3 /* ViewController.m */,
 				B19E5246219D6433006BBC3C /* LeftViewController.h */,
 				B19E5247219D6433006BBC3C /* LeftViewController.m */,
-				B19E524F219E5A4F006BBC3C /* LeftViewCell.h */,
-				B19E5250219E5A4F006BBC3C /* LeftViewCell.m */,
-				B19E5251219E5A4F006BBC3C /* LeftViewCell.xib */,
 				B168FC7C214A669B006C65FD /* EventModel.h */,
 				B168FC7D214A669B006C65FD /* EventModel.m */,
 				B174D59E215DFAC90055820A /* AddEventViewController.h */,
@@ -457,7 +449,6 @@
 				EFD81A302142D08600C67EC3 /* Main.storyboard in Resources */,
 				B12912962150D3AA0039B06D /* login_bg01.jpg in Resources */,
 				B174D5C0215F532E0055820A /* bannertips_success_blue@2x.png in Resources */,
-				B19E5253219E5A4F006BBC3C /* LeftViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,7 +512,6 @@
 				B174D55F2159D5EC0055820A /* NSString+MD5.m in Sources */,
 				B16A94AC2148BCF60001F3B1 /* LTSCalendarViewController.m in Sources */,
 				B179F4D52150DBCB009D70A5 /* MBProgressHUD+MJ.m in Sources */,
-				B19E5252219E5A4F006BBC3C /* LeftViewCell.m in Sources */,
 				B174D597215DD7C50055820A /* JohnAlertManager.m in Sources */,
 				B174D5B5215E1D010055820A /* Aspects.m in Sources */,
 				EFD81AEF214BF9C300C67EC3 /* ContentViewCell.m in Sources */,
