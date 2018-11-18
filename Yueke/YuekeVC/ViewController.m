@@ -148,7 +148,7 @@
     [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.top.mas_equalTo(self.manager.calenderScrollView.mas_bottom);
         make.left.right.mas_equalTo(self.view);
-        make.height.mas_equalTo(104);
+        make.height.mas_equalTo(144);
         make.bottom.mas_equalTo(self.view.mas_bottom);
     }];
 //    UIImage *image = [[UIImage alloc]init];
