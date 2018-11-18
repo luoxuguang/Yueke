@@ -36,7 +36,7 @@ typedef NS_ENUM(NSUInteger, ADDTYPE) {
 #define BaseUrl @"http://198.181.46.158:8080/gym"
 //#define BaseUrl @"http://172.16.12.85:8089"
 //#define BaseUrl @"http://localhost:8089"
-//#define BaseUrl @"http://66eb66da.ngrok.io"
+//#define BaseUrl @"http://e9f7e2fd.ngrok.io"
 
 #define API_login @"/login" //登录
 #define API_logout @"/logOut" //退出登录
@@ -57,15 +57,16 @@ typedef NS_ENUM(NSUInteger, ADDTYPE) {
 
 #define LeftWidth 50
 
-#define SafeAreaTopHeight (ScreenHeight == 812.0 ? 88 : 64)
+#define SafeAreaTopHeight ((ScreenHeight == 812.f || ScreenHeight == 896.f) ? 88 : 64)
 
 #define ScreenWidth [UIScreen mainScreen].bounds.size.width
 
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
 
 #define RGB(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]  //带有RGBA的颜色设置
-#define BlueColor  RGB(37, 94, 171, 1)
+
 #define GreenColor 0X96E6DC
+#define BlueColor  [UIColor colorWithHex:GreenColor]
 #define KEYCHAIN_SERVICE @"YUEKE_SERVCICE"
 #define user_token  [[NSUserDefaults standardUserDefaults]objectForKey:@"user_token"]?[[NSUserDefaults standardUserDefaults]objectForKey:@"user_token"]:@""
 

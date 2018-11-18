@@ -21,8 +21,8 @@
 @property (nonatomic,strong) NSArray *Events;
 
 @property (nonatomic,copy) void (^addCurseBlock)(EventModel *model);
-
-
+@property (nonatomic,copy) void (^showAddBtn)();
+@property (nonatomic,copy) void (^hiddenAddBtn)();
 - (void)scrollToSingleWeek;
 
 - (void)scrollToAllWeek;

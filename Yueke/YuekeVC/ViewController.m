@@ -12,6 +12,8 @@
 #import "AddEventViewController.h"
 #import <UIViewController+CWLateralSlide.h>
 #import "LeftViewController.h"
+#import "UIButton+Gradient.h"
+#import "UIView+Gradient.h"
 
 @interface ViewController ()<LTSCalendarEventSource>
 
@@ -21,6 +23,9 @@
 @property (nonatomic,strong)LTSCalendarManager *manager;
 @property (nonatomic,strong)UILabel *monthLabel;
 @property (nonatomic,strong) LeftViewController *leftVC; // 强引用，可以避免每次显示抽屉都去创建
+@property (nonatomic) BOOL isShowLeft;
+@property (nonatomic,strong) UIView *bottomView;
+
 
 @end
 
@@ -43,11 +48,13 @@
     
     [self.manager.calenderScrollView.tableView.mj_header beginRefreshing];
 }
+
 // 仿QQ从左侧划出
 - (void)defaultAnimationFromLeft {
     
     // 强引用leftVC，不用每次创建新的,也可以每次在这里创建leftVC，抽屉收起的时候会释放掉
     [self cw_showDefaultDrawerViewController:self.leftVC];
+    self.isShowLeft = !self.isShowLeft;
 }
 -(void)requestData{
     [MBProgressHUD showMessage:@"正在加载数据..." toView:self.view];
@@ -81,12 +88,11 @@
 
 -(void)setupUI{
     self.navigationItem.title = @"约课";
-    UIBarButtonItem *todayItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"iconfont_日历"] style:UIBarButtonItemStylePlain target:self action:@selector(todayItemClicked:)];
+
+    UIBarButtonItem *todayItem = [[UIBarButtonItem alloc] initWithTitle:@"今天" style:UIBarButtonItemStylePlain target:self action:@selector(todayItemClicked:)];
     todayItem.tintColor = [UIColor blackColor];
+    [todayItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithHex:0x333333], NSForegroundColorAttributeName,[UIFont systemFontOfSize:14.0],NSFontAttributeName,nil] forState:(UIControlStateNormal)];
     self.navigationItem.rightBarButtonItem = todayItem;
-    UIBarButtonItem *menuItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"iconfont_菜单"] style:UIBarButtonItemStylePlain target:self action:@selector(defaultAnimationFromLeft)];
-    menuItem.tintColor = [UIColor blackColor];
-    self.navigationItem.leftBarButtonItem = menuItem;
     
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -97,7 +103,7 @@
     self.manager.weekDayView = [[LTSCalendarWeekDayView alloc]initWithFrame:CGRectMake(LeftWidth, SafeAreaTopHeight, self.view.frame.size.width-LeftWidth, 20)];
     [self.view addSubview:self.manager.weekDayView];
     
-    self.manager.calenderScrollView = [[LTSCalendarScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.manager.weekDayView.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)-CGRectGetMaxY(self.manager.weekDayView.frame)-SafeAreaTopHeight+10)];
+    self.manager.calenderScrollView = [[LTSCalendarScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.manager.weekDayView.frame), CGRectGetWidth(self.view.frame), ScreenHeight-CGRectGetMaxY(self.manager.weekDayView.frame))];
     @weakify(self)
     self.manager.calenderScrollView.addCurseBlock = ^(id model) {
         @strongify(self)
@@ -108,6 +114,16 @@
             [self.manager.calenderScrollView.tableView.mj_header beginRefreshing];
         };
         [self.navigationController pushViewController:addVc animated:YES];
+    };
+    self.manager.calenderScrollView.showAddBtn = ^{
+        [UIView animateWithDuration:1 animations:^{
+            weak_self.bottomView.hidden = YES;
+        }];
+    };
+    self.manager.calenderScrollView.hiddenAddBtn = ^{
+        [UIView animateWithDuration:1 animations:^{
+            weak_self.bottomView.hidden = NO;
+        }];
     };
     
     
@@ -124,26 +140,61 @@
     [self.view addSubview:self.monthLabel];
     
     
-    UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    addBtn.frame = CGRectMake(10, ScreenHeight, 64, 64);
+    UIView *bottomView = [[UIView alloc]init];
+    bottomView.backgroundColor = [UIColor clearColor];
+    self.bottomView = bottomView;
+    [self.view addSubview:bottomView];
     
-    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-    gradientLayer.frame = CGRectMake(0, 0, 64, 64);
-    gradientLayer.startPoint = CGPointMake(0, 0);
-    gradientLayer.endPoint = CGPointMake(1, 0);
-    gradientLayer.locations = @[@(0.5),@(1.0)];//渐变点
-    [gradientLayer setColors:@[[UIColor colorWithHex:0x95FFCF],[UIColor colorWithHex:0x08AEEA]]];//渐变数组
-    [addBtn.layer addSublayer:gradientLayer];
-    [addBtn setImage:[UIImage imageNamed:@"iconfont_添加"] forState:UIControlStateNormal];
-    [self.view addSubview:addBtn];
-    [addBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.manager.calenderScrollView.mas_bottom).offset(40);
-        make.centerX.mas_equalTo(self.view.mas_centerX);
-        make.width.height.mas_equalTo(64);
+    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(self.manager.calenderScrollView.mas_bottom);
+        make.left.right.mas_equalTo(self.view);
+        make.height.mas_equalTo(104);
+        make.bottom.mas_equalTo(self.view.mas_bottom);
     }];
+//    UIImage *image = [[UIImage alloc]init];
+//    [image createImageWithSize:CGSizeMake(bottomView.frame.size.width,bottomView.frame.size.height ) gradientColors:@[(id)RGB(165, 255, 214,1),(id)RGB(55, 223, 189, 1),(id)RGB(31, 199, 211, 1),(id)RGB(8, 174, 234,1)]  percentage:@[@(0.0),@(1)] gradientType:GradientFromTopToBottom];
+//    bottomView.image = image;
+//
+    
+    
+    UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    addBtn.frame = CGRectMake((ScreenWidth-64)/2, 20, 64, 64);
+    addBtn.layer.masksToBounds = YES;
+    addBtn.layer.cornerRadius = 64/2;
+    addBtn.layer.shouldRasterize = YES;
+    addBtn.layer.shadowColor = RGB(3, 99, 166, 1).CGColor;
+    addBtn.layer.shadowOffset = CGSizeMake(2, 2);
+    [addBtn addTarget:self action:@selector(addCourse) forControlEvents:UIControlEventTouchUpInside];
+    [addBtn setTintColor:[UIColor whiteColor]];
+    [addBtn gradientButtonWithSize:CGSizeMake(64, 64) colorArray:@[(id)RGB(165, 255, 214,1),(id)RGB(55, 223, 189, 1),(id)RGB(31, 199, 211, 1),(id)RGB(8, 174, 234,1)] percentageArray:@[@(0.0),@(1)] gradientType:GradientFromLeftBottomToRightTop];
+    [addBtn setImage:[UIImage imageNamed:@"iconfont_添加"] forState:UIControlStateNormal];
+    [bottomView addSubview:addBtn];
+    
+//    UIImage *image = [UIImage iconWithInfo:TBCityIconInfoMake(@"\U0000e627", 30, [UIColor whiteColor])];
+    
+    UIButton *menuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    menuBtn.frame = CGRectMake(30, 30, 40, 40);
+    menuBtn.layer.masksToBounds = YES;
+    menuBtn.layer.cornerRadius = 40/2;
+    [menuBtn setBackgroundColor:[UIColor colorWithHex:0xC9D1D1]];
+    [menuBtn setTintColor:[UIColor whiteColor]];
+    [menuBtn setImage:[UIImage imageNamed:@"iconfont_菜单"] forState:UIControlStateNormal];
+    [menuBtn addTarget:self action:@selector(defaultAnimationFromLeft) forControlEvents:UIControlEventTouchUpInside];
+    [bottomView addSubview:menuBtn];
     
 }
 
+-(void)addCourse{
+    AddEventViewController *addVc =[[AddEventViewController alloc]init];
+    EventModel *model = [[EventModel alloc]init];
+    model.startDate = [NSDate date];
+    addVc.model = model;
+    addVc.hidesBottomBarWhenPushed = YES;
+    addVc.ADDSUCCESSBLOCK = ^{
+        [self.manager.calenderScrollView.tableView.mj_header beginRefreshing];
+    };
+    [self.navigationController pushViewController:addVc animated:YES];
+}
 
 - (void)todayItemClicked:(id)sender
 {
@@ -169,7 +220,7 @@
 -(UILabel *)monthLabel{
     if (!_monthLabel) {
         _monthLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, SafeAreaTopHeight, LeftWidth, 50)];
-        _monthLabel.textColor = [UIColor redColor];
+        _monthLabel.textColor = [UIColor colorWithHex:0x333333];
         _monthLabel.textAlignment = NSTextAlignmentCenter;
         _monthLabel.numberOfLines = 0;
     }

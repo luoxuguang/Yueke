@@ -7,11 +7,15 @@
 //
 
 #import "LeftViewController.h"
+#import "UIViewController+CWLateralSlide.h"
+#import "StudentsViewController.h"
+#import "AddStudentVC.h"
+#import "HJLoginExample03_VC.h"
 
 #define kTBCityIconXUEYUAN TBCityIconInfoMake(@"\U0000e62c", 24, [UIColor blackColor])
 #define kTBCityIconSTORE TBCityIconInfoMake(@"\U0000e62c", 24, [UIColor blackColor])
 #define kTBCityIconKECHENG TBCityIconInfoMake(@"\U0000e62c", 24, [UIColor blackColor])
-@interface LeftViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface LeftViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) UIView *headView;
@@ -68,7 +72,64 @@
     cell.textLabel.textColor = [UIColor colorWithHex:0x666666];
     return cell;
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    switch (indexPath.row) {
+        case 0:
+            {
+                StudentsViewController *vc = [StudentsViewController new];
+                [self cw_pushViewController:vc];
+            }
+            break;
+        case 1:
+        {
+            AddStudentVC *add = [[AddStudentVC alloc]init];
+            add.addType = ADDSTORE;
+            [self cw_pushViewController:add];
+        }
+            break;
+        case 2:
+        {
+            AddStudentVC *add = [[AddStudentVC alloc]init];
+            add.addType = ADDCOURSE;
+            [self cw_pushViewController:add];
+        }
+            break;
+            
+        
+    }
+    
+}
+-(void)logout{
+    HJLoginExample03_VC *login = [[HJLoginExample03_VC alloc]init];
+    login.isLogin = YES;
+    [self cw_pushViewController:login];
+    
+    NSDictionary *dict = @{@"token":user_token
+                           };
+    
+    [BasicNetWorking POST:[NSString stringWithFormat:@"%@%@",BaseUrl,API_logout] parameters:dict success:^(id responseObject) {
+        [JohnAlertManager showAlertWithType:JohnTopAlertTypeSuccess title:@"你已退出登录！"];
+        [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"user_token"];
+        [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"isLogin"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+    } failure:^(NSError *error) {
+        [JohnAlertManager showAlertWithType:JohnTopAlertTypeError title:@"网络出错了哦！"];
+    }];
+//    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"确定退出登录吗？" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"退出", nil];
+//    [alertView show];
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==1) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            AddStudentVC *add = [[AddStudentVC alloc]init];
+            add.addType = ADDCOURSE;
+            [self cw_pushViewController:add];
+        });
+        
+        
+    }
+}
 
 #pragma mark ----lazy load
 -(UITableView *)tableView{
@@ -104,6 +165,7 @@
         _exitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_exitBtn setTitle:@"退出登录" forState:UIControlStateNormal];
         [_exitBtn setTitleColor:[UIColor colorWithHex:0x999999] forState:UIControlStateNormal];
+        [_exitBtn addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
         _exitBtn.titleLabel.textColor = [UIColor colorWithHex:0x999999];
         _exitBtn.titleLabel.font = [UIFont systemFontOfSize:14.0];
     }

@@ -21,17 +21,20 @@
 //    self.navigationBar.barStyle = UIBarStyleBlack;
 //    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:20]}];
     
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc]initWithTitle:@""
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc]initWithTitle:@"1"
                                                                 style:UIBarButtonItemStylePlain
                                                                target:nil
                                                                action:nil];
     self.navigationBar.tintColor =
-    [UIColor whiteColor];
+    [UIColor blackColor];
     
     //主要是以下两个图片设置
-    self.navigationBar.backIndicatorImage = [UIImage imageNamed:@"back"];
-    self.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"back"];
+    self.navigationBar.backIndicatorImage = [UIImage imageNamed:@"iconfont_返回"];
+    self.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"iconfont_返回"];
+    
     self.navigationItem.backBarButtonItem = backItem;
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor clearColor]}forState:UIControlStateNormal];//将title 文字的颜色改为透明
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor clearColor]}forState:UIControlStateHighlighted]; //将title 文字的颜色改为透明
 }
 
 - (void)didReceiveMemoryWarning {

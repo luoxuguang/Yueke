@@ -45,6 +45,9 @@
 		B19E5265219E6A7B006BBC3C /* TBCityIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = B19E525F219E6A7B006BBC3C /* TBCityIconFont.m */; };
 		B19E5266219E6A7B006BBC3C /* TBCityIconInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B19E5261219E6A7B006BBC3C /* TBCityIconInfo.m */; };
 		B19E5267219E6A7B006BBC3C /* UIImage+TBCityIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = B19E5264219E6A7B006BBC3C /* UIImage+TBCityIconFont.m */; };
+		EF7CDC2121A065FD0096162E /* UIButton+Gradient.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7CDC1F21A065FD0096162E /* UIButton+Gradient.m */; };
+		EF7CDC2221A065FD0096162E /* UIImage+Gradient.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7CDC2021A065FD0096162E /* UIImage+Gradient.m */; };
+		EF7CDC2521A06A310096162E /* UIView+Gradient.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7CDC2421A06A310096162E /* UIView+Gradient.m */; };
 		EFD81A2A2142D08600C67EC3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81A292142D08600C67EC3 /* AppDelegate.m */; };
 		EFD81A2D2142D08600C67EC3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD81A2C2142D08600C67EC3 /* ViewController.m */; };
 		EFD81A302142D08600C67EC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFD81A2E2142D08600C67EC3 /* Main.storyboard */; };
@@ -133,6 +136,12 @@
 		B19E5263219E6A7B006BBC3C /* UIImage+TBCityIconFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+TBCityIconFont.h"; sourceTree = "<group>"; };
 		B19E5264219E6A7B006BBC3C /* UIImage+TBCityIconFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+TBCityIconFont.m"; sourceTree = "<group>"; };
 		C5777F407C05604F469166D2 /* libPods-Yueke.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Yueke.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF7CDC1D21A065FD0096162E /* UIButton+Gradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Gradient.h"; sourceTree = "<group>"; };
+		EF7CDC1E21A065FD0096162E /* UIImage+Gradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Gradient.h"; sourceTree = "<group>"; };
+		EF7CDC1F21A065FD0096162E /* UIButton+Gradient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Gradient.m"; sourceTree = "<group>"; };
+		EF7CDC2021A065FD0096162E /* UIImage+Gradient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Gradient.m"; sourceTree = "<group>"; };
+		EF7CDC2321A06A310096162E /* UIView+Gradient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Gradient.h"; sourceTree = "<group>"; };
+		EF7CDC2421A06A310096162E /* UIView+Gradient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Gradient.m"; sourceTree = "<group>"; };
 		EFD81A252142D08600C67EC3 /* Yueke.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yueke.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFD81A282142D08600C67EC3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EFD81A292142D08600C67EC3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -247,9 +256,23 @@
 			path = iconfont;
 			sourceTree = "<group>";
 		};
+		EF7CDC1C21A065FD0096162E /* Gradient */ = {
+			isa = PBXGroup;
+			children = (
+				EF7CDC1D21A065FD0096162E /* UIButton+Gradient.h */,
+				EF7CDC1F21A065FD0096162E /* UIButton+Gradient.m */,
+				EF7CDC1E21A065FD0096162E /* UIImage+Gradient.h */,
+				EF7CDC2021A065FD0096162E /* UIImage+Gradient.m */,
+				EF7CDC2321A06A310096162E /* UIView+Gradient.h */,
+				EF7CDC2421A06A310096162E /* UIView+Gradient.m */,
+			);
+			path = Gradient;
+			sourceTree = "<group>";
+		};
 		EFD52A8B2158E67500B727D0 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				EF7CDC1C21A065FD0096162E /* Gradient */,
 				B19E5254219E65AF006BBC3C /* iconfont */,
 				B174D5B2215E1D010055820A /* Aspects */,
 				B174D591215DD7C50055820A /* TopAlert */,
@@ -505,8 +528,10 @@
 				EFD81A332142D08600C67EC3 /* Yueke.xcdatamodeld in Sources */,
 				B174D59A215DD7F00055820A /* UIColor+Tools.m in Sources */,
 				B16A94A82148BCF60001F3B1 /* LTSCalendarManager.m in Sources */,
+				EF7CDC2121A065FD0096162E /* UIButton+Gradient.m in Sources */,
 				B19D02802151F5AE0058BFF9 /* AddStudentVC.m in Sources */,
 				B168FC7E214A669B006C65FD /* EventModel.m in Sources */,
+				EF7CDC2521A06A310096162E /* UIView+Gradient.m in Sources */,
 				B12912942150D3AA0039B06D /* HJLoginExample03_VC.m in Sources */,
 				EFD81AE42144016300C67EC3 /* StudentsViewController.m in Sources */,
 				B174D55F2159D5EC0055820A /* NSString+MD5.m in Sources */,
@@ -535,6 +560,7 @@
 				EFD81AE8214417AA00C67EC3 /* UIColor+util.m in Sources */,
 				EFD81A3B2142D08600C67EC3 /* main.m in Sources */,
 				B12912972150D3AA0039B06D /* NSArray+HJImages.m in Sources */,
+				EF7CDC2221A065FD0096162E /* UIImage+Gradient.m in Sources */,
 				B16A94AA2148BCF60001F3B1 /* LTSCalendarAppearance.m in Sources */,
 				EFD81A2A2142D08600C67EC3 /* AppDelegate.m in Sources */,
 				B174D5A0215DFAC90055820A /* AddEventViewController.m in Sources */,

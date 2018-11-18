@@ -20,7 +20,7 @@
 @property (nonatomic,copy) NSString *relid; //修改删除课程时使用
 @property (nonatomic,copy) NSString *username; //学员的名字
 
-
-
 @property (nonatomic) NSInteger cellNum; //方便约课时使用
+
+@property (nonatomic) BOOL isShowName;
 @end

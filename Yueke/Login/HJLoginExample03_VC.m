@@ -7,8 +7,9 @@
 //
 
 #import "HJLoginExample03_VC.h"
-#import "BaseTabbarController.h"
 #import "NSString+MD5.h"
+#import "BaseNavigationController.h"
+#import "ViewController.h"
 
 @interface HJLoginExample03_VC ()<UITextFieldDelegate>
 
@@ -278,17 +279,17 @@ static const CGFloat kTFLeftH = 20.f;
     
 }
 -(void)jumpToHomeVC{
-    BaseTabbarController *tabbar = [[BaseTabbarController alloc]init];
-    [self.navigationController pushViewController:tabbar animated:YES];
+    ViewController *vc = [[ViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
     NSMutableArray<UIViewController *> *tmpArr = [NSMutableArray array];
-    for (UIViewController *vc in self.navigationController.viewControllers) {
+//    for (UIViewController *vc in self.navigationController.viewControllers) {
         [tmpArr addObject:vc];
-    }
-    for (UIViewController *vc in self.navigationController.viewControllers) {
-        if (vc == self) {
-            [tmpArr removeObject:vc];
-        }
-    }
+//    }
+//    for (UIViewController *vc in self.navigationController.viewControllers) {
+//        if (vc == self) {
+//            [tmpArr removeObject:vc];
+//        }
+//    }
     self.navigationController.viewControllers = tmpArr;
 }
 

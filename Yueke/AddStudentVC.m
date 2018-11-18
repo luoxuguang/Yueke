@@ -167,8 +167,11 @@
             break;
         case 1:
         {
+            cell.textLabel.textColor = [UIColor colorWithHex:0x666666];
+            cell.textLabel.font = [UIFont systemFontOfSize:14.0];
             if (_isWoman) {
                 cell.textLabel.text =[NSString stringWithFormat:@"选择性别:   女"];
+                
             }else{
                 cell.textLabel.text =[NSString stringWithFormat:@"选择性别:   男"];
             }
@@ -238,9 +241,12 @@
         _nameField.tintColor = BlueColor;
         _nameField.placeholder = @"输入学员名称(必填)";
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 90, 60)];
+        label.font = [UIFont systemFontOfSize:14.0];
+        label.textColor = [UIColor colorWithHex:0x666666];
         label.text = @"学员名称:";
         _nameField.leftView = label;
-        _nameField.font = [UIFont systemFontOfSize:15.0];
+        _nameField.font = [UIFont systemFontOfSize:14.0];
+        _nameField.textColor = [UIColor colorWithHex:0x333333];
         _nameField.leftViewMode = UITextFieldViewModeAlways;
     }
     return _nameField;
@@ -251,9 +257,12 @@
         _storeField.tintColor = BlueColor;
         _storeField.placeholder = @"输入门店名称(必填)";
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 90, 60)];
+        label.font = [UIFont systemFontOfSize:14.0];
+        label.textColor = [UIColor colorWithHex:0x666666];
         label.text = @"门店名称:";
         _storeField.leftView = label;
-        _storeField.font = [UIFont systemFontOfSize:15.0];
+        _storeField.font = [UIFont systemFontOfSize:14.0];
+        _storeField.textColor = [UIColor colorWithHex:0x333333];
         _storeField.leftViewMode = UITextFieldViewModeAlways;
     }
     return _storeField;
@@ -264,9 +273,12 @@
         _courseField.tintColor = BlueColor;
         _courseField.placeholder = @"输入课程名称(必填)";
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 90, 60)];
+        label.font = [UIFont systemFontOfSize:14.0];
+        label.textColor = [UIColor colorWithHex:0x666666];
         label.text = @"课程名称:";
         _courseField.leftView = label;
-        _courseField.font = [UIFont systemFontOfSize:15.0];
+        _courseField.font = [UIFont systemFontOfSize:14.0];
+        _courseField.textColor = [UIColor colorWithHex:0x333333];
         _courseField.leftViewMode = UITextFieldViewModeAlways;
     }
     return _courseField;
@@ -277,10 +289,13 @@
         _heigthField.tintColor = BlueColor;
         _heigthField.placeholder = @"输入学员身高(选填)";
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 90, 60)];
+        label.font = [UIFont systemFontOfSize:14.0];
+        label.textColor = [UIColor colorWithHex:0x666666];
         label.text = @"学员身高:";
         _heigthField.keyboardType = UIKeyboardTypeNumberPad;
         _heigthField.leftView = label;
         _heigthField.font = [UIFont systemFontOfSize:15.0];
+        _heigthField.textColor = [UIColor colorWithHex:0x333333];
         _heigthField.leftViewMode = UITextFieldViewModeAlways;
     }
     return _heigthField;
@@ -292,9 +307,12 @@
         _weightField.placeholder = @"输入学员体重(选填)";
         _weightField.keyboardType = UIKeyboardTypeNumberPad;
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 90, 60)];
+        label.font = [UIFont systemFontOfSize:14.0];
+        label.textColor = [UIColor colorWithHex:0x666666];
         label.text = @"学员体重:";
         _weightField.leftView = label;
-        _weightField.font = [UIFont systemFontOfSize:15.0];
+        _weightField.font = [UIFont systemFontOfSize:14.0];
+        _weightField.textColor = [UIColor colorWithHex:0x333333];
         _weightField.leftViewMode = UITextFieldViewModeAlways;
     }
     return _weightField;
@@ -306,9 +324,12 @@
         _yearField.placeholder = @"输入学员年龄(选填)";
         _yearField.keyboardType = UIKeyboardTypeNumberPad;
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 90, 60)];
+        label.font = [UIFont systemFontOfSize:14.0];
+        label.textColor = [UIColor colorWithHex:0x666666];
         label.text = @"学员年龄:";
         _yearField.leftView = label;
-        _yearField.font = [UIFont systemFontOfSize:15.0];
+        _yearField.font = [UIFont systemFontOfSize:14.0];
+        _yearField.textColor = [UIColor colorWithHex:0x333333];
         _yearField.leftViewMode = UITextFieldViewModeAlways;
     }
     return _yearField;
@@ -320,9 +341,12 @@
         _phoneField.placeholder = @"输入学员手机号(选填)";
         _phoneField.keyboardType = UIKeyboardTypeNumberPad;
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 90, 60)];
+        label.font = [UIFont systemFontOfSize:14.0];
+        label.textColor = [UIColor colorWithHex:0x666666];
         label.text = @"联系方式:";
         _phoneField.leftView = label;
-        _phoneField.font = [UIFont systemFontOfSize:15.0];
+        _phoneField.font = [UIFont systemFontOfSize:14.0];
+        _phoneField.textColor = [UIColor colorWithHex:0x333333];
         _phoneField.leftViewMode = UITextFieldViewModeAlways;
     }
     return _phoneField;
@@ -340,8 +364,8 @@
         saveBtn.frame = CGRectMake(30, 5, ScreenWidth-60, 45);
         [saveBtn addTarget:self action:@selector(saveUser) forControlEvents:UIControlEventTouchUpInside];
         [saveBtn setTitle:@"保存" forState:UIControlStateNormal];
-        [saveBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [saveBtn setBackgroundColor:BlueColor];
+        [saveBtn setTitleColor:[UIColor colorWithHex:0x005555] forState:UIControlStateNormal];
+        [saveBtn setBackgroundColor:[UIColor colorWithHex:GreenColor]];
         UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 55)];
         [view addSubview:saveBtn];
         _tableView.tableFooterView = view;

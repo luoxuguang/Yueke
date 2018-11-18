@@ -105,14 +105,20 @@ typedef NS_ENUM(NSInteger, UIViewBorderLineType) {
     LTSCalendarDayItem *item = self.calendarView.daysInWeeks[indexPath.section][indexPath.row];
     innerCell.backgroundColor = [UIColor colorWithHex:0xf8f8f8];
     
+    
 //    if ([[YKTool getTimeWithStr:@"YYYY-MMM-DD" Date:item.date] isEqualToString:[YKTool getTimeWithStr:@"YYYY-MMM-DD" Date:[NSDate date]]]) {
 //        innerCell.backgroundColor = [UIColor colorWithHex:0xccdff1];
 //    }
    
     if ([self isRedWithItem:item]) {//
         EventModel *model = [self isRedWithItem:item];
+        [self setViewBorder:innerCell color:[UIColor colorWithHex:0xf8f8f8] border:1.0 type:UIViewBorderLineTypeLeft];
+        [self setViewBorder:innerCell color:[UIColor colorWithHex:0xf8f8f8] border:1.0 type:UIViewBorderLineTypeRight];
         innerCell.backgroundColor = [UIColor colorWithHex:GreenColor];
-        label.text = model.username;
+        if (model.isShowName) {
+            label.text = model.username;
+            [self setViewBorder:label color:[UIColor colorWithHex:0xf8f8f8] border:0.5 type:UIViewBorderLineTypeTop];
+        }
     }
     return innerCell;
 }
@@ -136,6 +142,11 @@ typedef NS_ENUM(NSInteger, UIViewBorderLineType) {
                 max = ([YKTool getHourWithdate:model.endDate]-9)*2-1;
             }
             if (self.CellNum>=min&&self.CellNum<=max) {
+                if (self.CellNum == min) {
+                    model.isShowName = YES;
+                }else{
+                    model.isShowName = NO;
+                }
                 return model;
             }
         }

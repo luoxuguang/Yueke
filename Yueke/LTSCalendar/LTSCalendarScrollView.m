@@ -15,6 +15,7 @@ static NSString *contentViewCellId = @"content.tableview.cell";
 
 @property (nonatomic,strong)UIView *line;
 @property (nonatomic,strong) NSMutableArray *dataArr;
+@property (nonatomic) CGFloat oldY;
 
 @end
 @implementation LTSCalendarScrollView
@@ -41,22 +42,18 @@ static NSString *contentViewCellId = @"content.tableview.cell";
     LTSCalendarContentView *calendarView = [[LTSCalendarContentView alloc]initWithFrame:CGRectMake(LeftWidth, 0, self.frame.size.width-LeftWidth, [LTSCalendarAppearance share].weekDayHeight*[LTSCalendarAppearance share].weeksToDisplay)];
     calendarView.CollectionViewScrollBlock = ^(UIScrollView *scrollView) {
         if ([scrollView isKindOfClass:[UICollectionView class]]) {
-//            [self.tableView reloadData];
             for (ContentViewCell *cell in self.tableView.visibleCells) {
                 cell.cellCollectionView.contentOffset = scrollView.contentOffset;
             }
         }
     };
-//    calendarView.CollectionViewEndScrollBlock = ^(UIScrollView *scrollView) {
-//        [self.tableView reloadData];
-//    };
     calendarView.eventSource = self;
     calendarView.currentDate = [NSDate date];
     [self addSubview:calendarView];
     self.calendarView = calendarView;
     self.line = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(calendarView.frame), CGRectGetWidth(self.frame),0.5)];
     
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(LeftWidth, CGRectGetMaxY(calendarView.frame), CGRectGetWidth(self.frame)-LeftWidth, CGRectGetHeight(self.frame)-CGRectGetMaxY(calendarView.frame)-200)];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(LeftWidth, CGRectGetMaxY(calendarView.frame), CGRectGetWidth(self.frame)-LeftWidth, CGRectGetHeight(self.frame)-CGRectGetMaxY(calendarView.frame)-240)];
     self.tableView.backgroundColor = self.backgroundColor;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -70,7 +67,7 @@ static NSString *contentViewCellId = @"content.tableview.cell";
     [self addSubview:self.tableView];
     
     
-    self.leftTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(calendarView.frame), LeftWidth, CGRectGetHeight(self.frame)-CGRectGetMaxY(calendarView.frame)-200)];
+    self.leftTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(calendarView.frame), LeftWidth, CGRectGetHeight(self.frame)-CGRectGetMaxY(calendarView.frame)-240)];
     self.leftTableView.backgroundColor = self.backgroundColor;
     self.leftTableView.delegate = self;
     self.leftTableView.dataSource = self;
@@ -177,6 +174,20 @@ static NSString *contentViewCellId = @"content.tableview.cell";
     if (scrollView != self) {
         if (scrollView == self.tableView) {
             self.leftTableView.contentOffset = self.tableView.contentOffset;
+            if (self.tableView.contentOffset.y > _oldY) {
+                // 上滑
+                if (self.showAddBtn) {
+                    self.showAddBtn();
+                }
+            }
+            else{
+                // 下滑
+                if (self.hiddenAddBtn) {
+                    self.hiddenAddBtn();
+                }
+                
+            }
+
         }
         if (scrollView == self.leftTableView) {
             self.tableView.contentOffset = self.leftTableView.contentOffset;
@@ -317,6 +328,9 @@ static NSString *contentViewCellId = @"content.tableview.cell";
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
      [self.calendarView setUpVisualRegion];
+    if (scrollView == self.tableView) {
+        _oldY = self.tableView.contentOffset.y;
+    }
 }
 
 

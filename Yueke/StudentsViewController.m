@@ -10,7 +10,7 @@
 #import "AddStudentVC.h"
 #import "HJLoginExample03_VC.h"
 #import <PopoverView.h>
-@interface StudentsViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
+@interface StudentsViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *dataArr;
@@ -25,9 +25,12 @@
     self.navigationItem.title = @"学员";
     self.view.backgroundColor = [UIColor whiteColor];
     
-    UIBarButtonItem *todayItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addStudent:)];
-    todayItem.tintColor = [UIColor whiteColor];
-    self.navigationItem.rightBarButtonItem = todayItem;
+    UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"iconfont_添加"] style:UIBarButtonItemStylePlain target:self action:@selector(addStudent:)];
+    addItem.tintColor = [UIColor blackColor];
+    self.navigationItem.rightBarButtonItem = addItem;
+    
+    
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self.view addSubview:self.tableView];
@@ -55,36 +58,38 @@
 
 -(void)addStudent:(UIBarButtonItem *)sender{
     
-    PopoverAction *addStore = [PopoverAction actionWithImage:[UIImage imageNamed:@"addStore"] title:@"添加门店" handler:^(PopoverAction *action) {
-        AddStudentVC *add = [[AddStudentVC alloc]init];
-        add.addType = ADDSTORE;
-        add.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:add animated:YES];
-    }];
-    PopoverAction *addCourse = [PopoverAction actionWithImage:[UIImage imageNamed:@"addCourse"] title:@"添加课程" handler:^(PopoverAction *action) {
-        AddStudentVC *add = [[AddStudentVC alloc]init];
-        add.addType = ADDCOURSE;
-        add.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:add animated:YES];
-    }];
-    PopoverAction *addStudent = [PopoverAction actionWithImage:[UIImage imageNamed:@"addStudent"] title:@"添加学员" handler:^(PopoverAction *action) {
-        AddStudentVC *add = [[AddStudentVC alloc]init];
-        add.addType = ADDSTUDENT;
-        @weakify(self)
-        add.AddSuccessBlock = ^{
-            @strongify(self)
-            [self.tableView.mj_header beginRefreshing];
-        };
-        add.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:add animated:YES];
-    }];
-    PopoverAction *exit = [PopoverAction actionWithImage:[UIImage imageNamed:@"exit"] title:@"退出登录" handler:^(PopoverAction *action) {
-        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"确定退出登录吗？" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"退出", nil];
-        [alertView show];
-    }];
-    PopoverView *popoverView = [PopoverView popoverView];
-    popoverView.showShade = YES; // 显示阴影背景
-    [popoverView showToPoint:CGPointMake(ScreenWidth-15, SafeAreaTopHeight) withActions:@[addStore,addCourse,addStudent,exit]];
+    AddStudentVC *add = [[AddStudentVC alloc]init];
+    add.addType = ADDSTUDENT;
+    @weakify(self)
+    add.AddSuccessBlock = ^{
+        @strongify(self)
+        [self.tableView.mj_header beginRefreshing];
+    };
+    add.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:add animated:YES];
+    
+//    PopoverAction *addStore = [PopoverAction actionWithImage:[UIImage imageNamed:@"addStore"] title:@"添加门店" handler:^(PopoverAction *action) {
+//        AddStudentVC *add = [[AddStudentVC alloc]init];
+//        add.addType = ADDSTORE;
+//        add.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:add animated:YES];
+//    }];
+//    PopoverAction *addCourse = [PopoverAction actionWithImage:[UIImage imageNamed:@"addCourse"] title:@"添加课程" handler:^(PopoverAction *action) {
+//        AddStudentVC *add = [[AddStudentVC alloc]init];
+//        add.addType = ADDCOURSE;
+//        add.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:add animated:YES];
+//    }];
+//    PopoverAction *addStudent = [PopoverAction actionWithImage:[UIImage imageNamed:@"addStudent"] title:@"添加学员" handler:^(PopoverAction *action) {
+//        
+//    }];
+//    PopoverAction *exit = [PopoverAction actionWithImage:[UIImage imageNamed:@"exit"] title:@"退出登录" handler:^(PopoverAction *action) {
+//        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"确定退出登录吗？" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"退出", nil];
+//        [alertView show];
+//    }];
+//    PopoverView *popoverView = [PopoverView popoverView];
+//    popoverView.showShade = YES; // 显示阴影背景
+//    [popoverView showToPoint:CGPointMake(ScreenWidth-15, SafeAreaTopHeight) withActions:@[addStore,addCourse,addStudent,exit]];
     
 }
 -(void)deleteStudentWithIndex:(NSInteger)index{
@@ -128,31 +133,12 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     NSDictionary *dict = self.dataArr[indexPath.row];
     cell.textLabel.text = [[dict objectForKey:@"name"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    cell.textLabel.font = [UIFont systemFontOfSize:14.0];
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-}
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex==1) {
-        HJLoginExample03_VC *login = [[HJLoginExample03_VC alloc]init];
-        login.hidesBottomBarWhenPushed = YES;
-        login.isLogin = YES;
-        [self.navigationController pushViewController:login animated:YES];
-        [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"user_token"];
-        [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"isLogin"];
-        [[NSUserDefaults standardUserDefaults]synchronize];
-        NSDictionary *dict = @{@"token":user_token
-                               };
-        
-        [BasicNetWorking POST:[NSString stringWithFormat:@"%@%@",BaseUrl,API_logout] parameters:dict success:^(id responseObject) {
-            [JohnAlertManager showAlertWithType:JohnTopAlertTypeSuccess title:@"你已退出登录！"];
-            
-        } failure:^(NSError *error) {
-            [JohnAlertManager showAlertWithType:JohnTopAlertTypeError title:@"网络出错了哦！"];
-        }];
-    }
 }
 
 

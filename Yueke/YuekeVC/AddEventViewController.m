@@ -50,7 +50,8 @@
         self.startDateField.text =  _hour;
         self.endDateField.text = [YKTool getTimeWithStr:@"HH:mm" Date:self.model.endDate];
         UIBarButtonItem *todayItem = [[UIBarButtonItem alloc] initWithTitle:@"删除" style:UIBarButtonItemStylePlain target:self action:@selector(deleteClicked:)];
-        todayItem.tintColor = [UIColor whiteColor];
+        todayItem.tintColor = [UIColor blackColor];
+         [todayItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor redColor], NSForegroundColorAttributeName,[UIFont systemFontOfSize:14.0],NSFontAttributeName,nil] forState:(UIControlStateNormal)];
         self.navigationItem.rightBarButtonItem = todayItem;
     }
     
@@ -123,6 +124,10 @@
     
     if (self.nameField.text==nil||self.nameField.text.length==0) {
         [JohnAlertManager showAlertWithType:JohnTopAlertTypeError title:@"请选择学员！"];
+        return;
+    }
+    if ([self.startDateField.text integerValue]>[self.endDateField.text integerValue]) {
+        [JohnAlertManager showAlertWithType:JohnTopAlertTypeError title:@"请选择正确的时间！"];
         return;
     }
     [MBProgressHUD showMessage:@"请稍后..." toView:self.view];
@@ -293,12 +298,12 @@
                 @strongify(self)
                 
                 if (self.endDateField.text.length) {
-                    if ([selectedStr integerValue]>[self.endDateField.text integerValue]) {
-                        [JohnAlertManager showAlertWithType:JohnTopAlertTypeError title:@"请选择正确的时间！"];
-                    }else{
+//                    if ([selectedStr integerValue]>[self.endDateField.text integerValue]) {
+//                        [JohnAlertManager showAlertWithType:JohnTopAlertTypeError title:@"请选择正确的时间！"];
+//                    }else{
                         self.startDateField.text = selectedStr;
                         self.hour = selectedStr;
-                    }
+//                    }
                 }else{
                     self.startDateField.text = selectedStr;
                     self.endDateField.text = [NSString stringWithFormat:@"%ld%@",[[selectedStr substringToIndex:2] integerValue]+1,[selectedStr substringFromIndex:2]];
@@ -357,12 +362,12 @@
         saveBtn.frame = CGRectMake(30, 5, ScreenWidth-60, 45);
         [saveBtn addTarget:self action:@selector(addCurse) forControlEvents:UIControlEventTouchUpInside];
         if (self.model.relid) {
-           [saveBtn setTitle:@"修改" forState:UIControlStateNormal];
+           [saveBtn setTitle:@"确认修改" forState:UIControlStateNormal];
         }else{
             [saveBtn setTitle:@"保存" forState:UIControlStateNormal];
         }
         
-        [saveBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [saveBtn setTitleColor:[UIColor colorWithHex:0x005555] forState:UIControlStateNormal];
         [saveBtn setBackgroundColor:BlueColor];
         UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 55)];
         [view addSubview:saveBtn];
@@ -375,11 +380,14 @@
         _nameField = [[UITextField alloc]initWithFrame:CGRectMake(15, 0, ScreenWidth-30, 60)];
         _nameField.tintColor = BlueColor;
         _nameField.placeholder = @"请选择学员";
-        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 90, 60)];
+        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(15, 0, 90, 60)];
+        label.font = [UIFont systemFontOfSize:14.0];
+        label.textColor = [UIColor colorWithHex:0x666666];
         label.text = @"学员:";
         _nameField.leftView = label;
         _nameField.enabled = NO;
-        _nameField.font = [UIFont systemFontOfSize:15.0];
+        _nameField.font = [UIFont systemFontOfSize:14.0];
+        _nameField.textColor = [UIColor colorWithHex:0x333333];
         _nameField.leftViewMode = UITextFieldViewModeAlways;
     }
     return _nameField;
@@ -391,9 +399,12 @@
         _storeField.placeholder = @"请选择门店";
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 90, 60)];
         label.text = @"门店:";
+        label.font = [UIFont systemFontOfSize:14.0];
+        label.textColor = [UIColor colorWithHex:0x666666];
         _storeField.leftView = label;
         _storeField.enabled = NO;
-        _storeField.font = [UIFont systemFontOfSize:15.0];
+        _storeField.font = [UIFont systemFontOfSize:14.0];
+        _storeField.textColor = [UIColor colorWithHex:0x333333];
         _storeField.leftViewMode = UITextFieldViewModeAlways;
     }
     return _storeField;
@@ -404,10 +415,13 @@
         _courseField.tintColor = BlueColor;
         _courseField.placeholder = @"请选择课程";
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 90, 60)];
+        label.font = [UIFont systemFontOfSize:14.0];
+        label.textColor = [UIColor colorWithHex:0x666666];
         label.text = @"课程:";
         _courseField.leftView = label;
         _courseField.enabled = NO;
-        _courseField.font = [UIFont systemFontOfSize:15.0];
+        _courseField.font = [UIFont systemFontOfSize:14.0];
+        _courseField.textColor = [UIColor colorWithHex:0x333333];
         _courseField.leftViewMode = UITextFieldViewModeAlways;
     }
     return _courseField;
@@ -419,9 +433,12 @@
         _startDateField.placeholder = @"请选择起始时间";
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 90, 60)];
         label.text = @"起始时间:";
+        label.font = [UIFont systemFontOfSize:14.0];
+        label.textColor = [UIColor colorWithHex:0x666666];
         _startDateField.leftView = label;
         _startDateField.enabled = NO;
-        _startDateField.font = [UIFont systemFontOfSize:15.0];
+        _startDateField.font = [UIFont systemFontOfSize:14.0];
+        _startDateField.textColor = [UIColor colorWithHex:0x333333];
         _startDateField.leftViewMode = UITextFieldViewModeAlways;
     }
     return _startDateField;
@@ -433,9 +450,12 @@
         _endDateField.placeholder = @"请选择结束时间";
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 90, 60)];
         label.text = @"结束时间:";
+        label.font = [UIFont systemFontOfSize:14.0];
+        label.textColor = [UIColor colorWithHex:0x666666];
         _endDateField.leftView = label;
         _endDateField.enabled = NO;
-        _endDateField.font = [UIFont systemFontOfSize:15.0];
+        _endDateField.font = [UIFont systemFontOfSize:14.0];
+        _endDateField.textColor = [UIColor colorWithHex:0x333333];
         _endDateField.leftViewMode = UITextFieldViewModeAlways;
     }
     return _endDateField;
@@ -447,9 +467,12 @@
         _dateField.placeholder = @"日期";
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 90, 60)];
         label.text = @"日期:";
+        label.font = [UIFont systemFontOfSize:14.0];
+        label.textColor = [UIColor colorWithHex:0x666666];
         _dateField.leftView = label;
         _dateField.enabled = NO;
-        _dateField.font = [UIFont systemFontOfSize:15.0];
+        _dateField.font = [UIFont systemFontOfSize:14.0];
+        _dateField.textColor = [UIColor colorWithHex:0x333333];
         _dateField.leftViewMode = UITextFieldViewModeAlways;
     }
     return _dateField;
