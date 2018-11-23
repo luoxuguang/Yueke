@@ -45,6 +45,10 @@
 		B19E5265219E6A7B006BBC3C /* TBCityIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = B19E525F219E6A7B006BBC3C /* TBCityIconFont.m */; };
 		B19E5266219E6A7B006BBC3C /* TBCityIconInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B19E5261219E6A7B006BBC3C /* TBCityIconInfo.m */; };
 		B19E5267219E6A7B006BBC3C /* UIImage+TBCityIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = B19E5264219E6A7B006BBC3C /* UIImage+TBCityIconFont.m */; };
+		B1A8F3B721A29C740042C642 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A8F3B621A29C740042C642 /* MainViewController.m */; };
+		B1D2703121A799FF00FD7FA0 /* HeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D2703021A799FF00FD7FA0 /* HeadView.m */; };
+		B1D2703621A79CEC00FD7FA0 /* headCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D2703421A79CEC00FD7FA0 /* headCell.m */; };
+		B1D2703721A79CEC00FD7FA0 /* headCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1D2703521A79CEC00FD7FA0 /* headCell.xib */; };
 		EF7CDC2121A065FD0096162E /* UIButton+Gradient.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7CDC1F21A065FD0096162E /* UIButton+Gradient.m */; };
 		EF7CDC2221A065FD0096162E /* UIImage+Gradient.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7CDC2021A065FD0096162E /* UIImage+Gradient.m */; };
 		EF7CDC2521A06A310096162E /* UIView+Gradient.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7CDC2421A06A310096162E /* UIView+Gradient.m */; };
@@ -135,6 +139,13 @@
 		B19E5262219E6A7B006BBC3C /* TBCityIconFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBCityIconFont.h; sourceTree = "<group>"; };
 		B19E5263219E6A7B006BBC3C /* UIImage+TBCityIconFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+TBCityIconFont.h"; sourceTree = "<group>"; };
 		B19E5264219E6A7B006BBC3C /* UIImage+TBCityIconFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+TBCityIconFont.m"; sourceTree = "<group>"; };
+		B1A8F3B521A29C740042C642 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		B1A8F3B621A29C740042C642 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		B1D2702F21A799FF00FD7FA0 /* HeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeadView.h; sourceTree = "<group>"; };
+		B1D2703021A799FF00FD7FA0 /* HeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeadView.m; sourceTree = "<group>"; };
+		B1D2703321A79CEC00FD7FA0 /* headCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = headCell.h; sourceTree = "<group>"; };
+		B1D2703421A79CEC00FD7FA0 /* headCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = headCell.m; sourceTree = "<group>"; };
+		B1D2703521A79CEC00FD7FA0 /* headCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = headCell.xib; sourceTree = "<group>"; };
 		C5777F407C05604F469166D2 /* libPods-Yueke.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Yueke.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF7CDC1D21A065FD0096162E /* UIButton+Gradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Gradient.h"; sourceTree = "<group>"; };
 		EF7CDC1E21A065FD0096162E /* UIImage+Gradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Gradient.h"; sourceTree = "<group>"; };
@@ -254,6 +265,20 @@
 				B19E5264219E6A7B006BBC3C /* UIImage+TBCityIconFont.m */,
 			);
 			path = iconfont;
+			sourceTree = "<group>";
+		};
+		B1D2703221A79A0600FD7FA0 /* New */ = {
+			isa = PBXGroup;
+			children = (
+				B1A8F3B521A29C740042C642 /* MainViewController.h */,
+				B1A8F3B621A29C740042C642 /* MainViewController.m */,
+				B1D2702F21A799FF00FD7FA0 /* HeadView.h */,
+				B1D2703021A799FF00FD7FA0 /* HeadView.m */,
+				B1D2703321A79CEC00FD7FA0 /* headCell.h */,
+				B1D2703421A79CEC00FD7FA0 /* headCell.m */,
+				B1D2703521A79CEC00FD7FA0 /* headCell.xib */,
+			);
+			path = New;
 			sourceTree = "<group>";
 		};
 		EF7CDC1C21A065FD0096162E /* Gradient */ = {
@@ -392,6 +417,7 @@
 				B174D59F215DFAC90055820A /* AddEventViewController.m */,
 				B174D5AF215E1C100055820A /* SelStudentsViewController.h */,
 				B174D5B0215E1C100055820A /* SelStudentsViewController.m */,
+				B1D2703221A79A0600FD7FA0 /* New */,
 			);
 			path = YuekeVC;
 			sourceTree = "<group>";
@@ -468,6 +494,7 @@
 				EFD81A382142D08600C67EC3 /* LaunchScreen.storyboard in Resources */,
 				B174D5C2215F532E0055820A /* bannertips_message@2x.png in Resources */,
 				B174D5C1215F532E0055820A /* bannertips_warning@2x.png in Resources */,
+				B1D2703721A79CEC00FD7FA0 /* headCell.xib in Resources */,
 				EFD81A352142D08600C67EC3 /* Assets.xcassets in Resources */,
 				EFD81A302142D08600C67EC3 /* Main.storyboard in Resources */,
 				B12912962150D3AA0039B06D /* login_bg01.jpg in Resources */,
@@ -537,7 +564,9 @@
 				B174D55F2159D5EC0055820A /* NSString+MD5.m in Sources */,
 				B16A94AC2148BCF60001F3B1 /* LTSCalendarViewController.m in Sources */,
 				B179F4D52150DBCB009D70A5 /* MBProgressHUD+MJ.m in Sources */,
+				B1D2703621A79CEC00FD7FA0 /* headCell.m in Sources */,
 				B174D597215DD7C50055820A /* JohnAlertManager.m in Sources */,
+				B1A8F3B721A29C740042C642 /* MainViewController.m in Sources */,
 				B174D5B5215E1D010055820A /* Aspects.m in Sources */,
 				EFD81AEF214BF9C300C67EC3 /* ContentViewCell.m in Sources */,
 				B16A94A72148BCF60001F3B1 /* LTSCalendarDayItem.m in Sources */,
@@ -556,6 +585,7 @@
 				EFD81ADE214400A100C67EC3 /* BaseTabbarController.m in Sources */,
 				EFD81AE12144011A00C67EC3 /* BaseNavigationController.m in Sources */,
 				B16A94A92148BCF60001F3B1 /* LTSCircleView.m in Sources */,
+				B1D2703121A799FF00FD7FA0 /* HeadView.m in Sources */,
 				B19E5248219D6433006BBC3C /* LeftViewController.m in Sources */,
 				EFD81AE8214417AA00C67EC3 /* UIColor+util.m in Sources */,
 				EFD81A3B2142D08600C67EC3 /* main.m in Sources */,

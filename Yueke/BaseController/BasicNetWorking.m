@@ -46,6 +46,7 @@
             success(dic);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [JohnAlertManager showAlertWithType:JohnTopAlertTypeError title:@"服务器出问题啦！！！"];
         if (failure) {
             failure(error);
         }

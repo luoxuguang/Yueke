@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="headCell" reuseIdentifier="headCell" id="gTV-IL-0wX" customClass="headCell">
+            <rect key="frame" x="0.0" y="0.0" width="67" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="67" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="周一" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FrE-0L-raA">
+                        <rect key="frame" x="0.0" y="0.0" width="67" height="25"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgV-oh-f6t">
+                        <rect key="frame" x="0.0" y="25" width="67" height="25"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="hgV-oh-f6t" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="Afn-dU-UFE"/>
+                <constraint firstItem="FrE-0L-raA" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="F94-6e-iAe"/>
+                <constraint firstItem="FrE-0L-raA" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.5" id="GUv-Pe-6IS"/>
+                <constraint firstItem="hgV-oh-f6t" firstAttribute="top" secondItem="FrE-0L-raA" secondAttribute="bottom" id="PQR-DT-Zrc"/>
+                <constraint firstItem="FrE-0L-raA" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="T9u-Lr-hBv"/>
+                <constraint firstItem="FrE-0L-raA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ZRU-ES-rDk"/>
+                <constraint firstItem="hgV-oh-f6t" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="d4J-mp-C23"/>
+                <constraint firstItem="hgV-oh-f6t" firstAttribute="height" secondItem="FrE-0L-raA" secondAttribute="height" id="lJj-Ad-jNS"/>
+            </constraints>
+            <size key="customSize" width="67" height="50"/>
+            <connections>
+                <outlet property="dayLabel" destination="hgV-oh-f6t" id="dji-eZ-z70"/>
+                <outlet property="weekLabel" destination="FrE-0L-raA" id="cU3-cI-ZL2"/>
+            </connections>
+            <point key="canvasLocation" x="-215.19999999999999" y="-79.160419790104953"/>
+        </collectionViewCell>
+        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LO9-3R-oZF">
+            <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+            <nil key="textColor"/>
+            <nil key="highlightedColor"/>
+            <point key="canvasLocation" x="-112" y="-42"/>
+        </label>
+    </objects>
+</document>
