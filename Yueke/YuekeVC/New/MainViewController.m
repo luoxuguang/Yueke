@@ -27,7 +27,7 @@
 
 -(HeadView *)headView{
     if (!_headView) {
-        _headView = [[HeadView alloc]initWithFrame:CGRectMake(0, SafeAreaTopHeight, self.view.frame.size.width, 50)];
+        _headView = [[HeadView alloc]initWithFrame:CGRectMake(0, SafeAreaTopHeight, self.view.frame.size.width-60, 50)];
     }
     return _headView;
 }

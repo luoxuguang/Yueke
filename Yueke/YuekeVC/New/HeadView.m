@@ -31,7 +31,7 @@ static NSString *cellId = @"headCell";
 
 -(void)layoutSubviews{
     self.monthLabel.frame = CGRectMake(0, 0, 60, self.frame.size.height);
-    self.collectionView.frame  = CGRectMake(60, 0, self.frame.size.width-60, self.frame.size.height);
+    self.collectionView.frame  = CGRectMake(60, 0, self.frame.size.width, self.frame.size.height);
 }
 
 -(void)reloadData{
@@ -43,20 +43,22 @@ static NSString *cellId = @"headCell";
 -(void)addSubviews{
     [self addSubview:self.monthLabel];
     [self addSubview:self.collectionView];
+    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:cellId];
+//    [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([headCell class]) bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:cellId];
 }
 
 #pragma mark --- datasource
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 7;
+    return 5;
 }
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    headCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
-    
+//    headCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor lightGrayColor];
     return cell;
 }
 - (CGSize)collectionView:(UICollectionView *)uiCollectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake((self.frame.size.width-60)/7, self.frame.size.height);
+    return CGSizeMake(self.frame.size.width, self.frame.size.height);
 }
 
 #pragma mark --  lazy
@@ -65,6 +67,7 @@ static NSString *cellId = @"headCell";
     if (!_monthLabel) {
         _monthLabel = [[UILabel alloc]init];
         _monthLabel.text  = @"11";
+        _monthLabel.textAlignment = NSTextAlignmentCenter;
         _monthLabel.font = [UIFont systemFontOfSize:15.0];
         _monthLabel.textColor = [UIColor redColor];
     }
@@ -74,12 +77,14 @@ static NSString *cellId = @"headCell";
 -(UICollectionView *)collectionView{
     if (!_collectionView) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
-        layout.minimumLineSpacing = layout.minimumInteritemSpacing = 0;
+        layout.minimumLineSpacing = layout.minimumInteritemSpacing = 1;
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         _collectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
+        _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
-        [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([headCell class]) bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:cellId];
+        _collectionView.pagingEnabled = YES;
+        
     }
     return _collectionView;
 }
