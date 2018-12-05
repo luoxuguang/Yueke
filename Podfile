@@ -1,10 +1,8 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
-
+#source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
 target 'Yueke' do
-  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
-  # use_frameworks!
-	
   # Pods for Yueke
 	pod 'Masonry'
     pod 'MJRefresh'
@@ -15,4 +13,5 @@ target 'Yueke' do
     pod 'IQKeyboardManager'
     pod 'Popover.OC'
     pod 'CWLateralSlide', '~> 1.6.3'
+    pod 'CalendarLib'
 end

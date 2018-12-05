@@ -36,7 +36,7 @@
                   moduleName = "Yueke"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xl/luo/Yueke/Yueke/AddStudentVC.m"
-                  timestampString = "564657193.552246"
+                  timestampString = "565705784.1841429"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "97"
@@ -51,7 +51,7 @@
                   moduleName = "Yueke"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xl/luo/Yueke/Yueke/AddStudentVC.m"
-                  timestampString = "564657193.5552191"
+                  timestampString = "565705784.186697"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "97"
@@ -66,7 +66,7 @@
                   moduleName = "Yueke"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xl/luo/Yueke/Yueke/AddStudentVC.m"
-                  timestampString = "564657193.557701"
+                  timestampString = "565705784.189451"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "97"
@@ -179,7 +179,7 @@
                   moduleName = "Yueke"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xl/luo/Yueke/Yueke/YuekeVC/AddEventViewController.m"
-                  timestampString = "564657193.584385"
+                  timestampString = "565705784.237324"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "68"
@@ -194,7 +194,7 @@
                   moduleName = "Yueke"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xl/luo/Yueke/Yueke/YuekeVC/AddEventViewController.m"
-                  timestampString = "564657193.586293"
+                  timestampString = "565705784.240087"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "68"
@@ -209,7 +209,7 @@
                   moduleName = "Yueke"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xl/luo/Yueke/Yueke/YuekeVC/AddEventViewController.m"
-                  timestampString = "564657193.588161"
+                  timestampString = "565705784.24252"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "68"
@@ -242,7 +242,7 @@
                   moduleName = "Yueke"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xl/luo/Yueke/Yueke/YuekeVC/AddEventViewController.m"
-                  timestampString = "564657193.593942"
+                  timestampString = "565705784.2511441"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "76"
@@ -257,7 +257,7 @@
                   moduleName = "Yueke"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xl/luo/Yueke/Yueke/YuekeVC/AddEventViewController.m"
-                  timestampString = "564657193.5957561"
+                  timestampString = "565705784.254081"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "68"
@@ -272,7 +272,7 @@
                   moduleName = "Yueke"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/xl/luo/Yueke/Yueke/YuekeVC/AddEventViewController.m"
-                  timestampString = "564657193.5976059"
+                  timestampString = "565705784.256502"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "78"
@@ -294,7 +294,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "237"
             endingLineNumber = "237"
-            landmarkName = "-scrollViewDidScroll:"
+            landmarkName = "-hitTest:withEvent:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -305,86 +305,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Yueke/YuekeVC/ViewController.m"
-            timestampString = "564631750.085529"
+            timestampString = "565671179.837716"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "-requestData"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Yueke/YuekeVC/ViewController.m"
-            timestampString = "564631750.086399"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "-requestData"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__29-[ViewController requestData]_block_invoke"
-                  moduleName = "Yueke"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/xl/luo/Yueke/Yueke/YuekeVC/ViewController.m"
-                  timestampString = "564657193.60813"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "440">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__29-[ViewController requestData]_block_invoke_2"
-                  moduleName = "Yueke"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/xl/luo/Yueke/Yueke/YuekeVC/ViewController.m"
-                  timestampString = "564657193.609926"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "28">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.117"
-                  moduleName = "Yueke"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/xl/luo/Yueke/Yueke/YuekeVC/ViewController.m"
-                  timestampString = "564657193.611836"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            scope = "0"
-            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

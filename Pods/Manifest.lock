@@ -14,11 +14,16 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - CalendarLib (2.0):
+    - OrderedDictionary (~> 1.2)
+    - OSCache (~> 1.2)
   - CWLateralSlide (1.6.3)
   - IQKeyboardManager (6.2.0)
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
   - MJRefresh (3.1.15.7)
+  - OrderedDictionary (1.4)
+  - OSCache (1.2.1)
   - Popover.OC (2.2)
   - SAMKeychain (1.5.3)
   - SDWebImage (4.4.2):
@@ -27,6 +32,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
+  - CalendarLib
   - CWLateralSlide (~> 1.6.3)
   - IQKeyboardManager
   - Masonry
@@ -39,26 +45,32 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - CalendarLib
     - CWLateralSlide
     - IQKeyboardManager
     - Masonry
     - MBProgressHUD
     - MJRefresh
+    - OrderedDictionary
+    - OSCache
     - Popover.OC
     - SAMKeychain
     - SDWebImage
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  CalendarLib: 040a8a655376581d8dc7c3c63196ddcf5223f471
   CWLateralSlide: 1b9a848873b93de45cfefe6389765b12aa70982c
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
+  OrderedDictionary: 138c8d2e358d3a0c9adda15c6c7db24e8e3b09e6
+  OSCache: 826996b68e8542a8a3d8af1ab0a0fc3070d8f357
   Popover.OC: bfcce8307f77593e1e1d7cf58604077f74e114bc
   SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
 
-PODFILE CHECKSUM: 1672c3bfa0272d6f812f902ee7c74a57b346aadc
+PODFILE CHECKSUM: 35389b0fedc7e25f7fe5f96ff8b478d5dd8ab357
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.0.beta.2
