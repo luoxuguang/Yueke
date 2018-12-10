@@ -8,13 +8,14 @@
 #import "MainViewController.h"
 #import "MonthViewController.h"
 #import "NSCalendar+MGCAdditions.h"
+#import "WeekViewController.h"
 
-@interface MainViewController ()
+@interface MainViewController ()<WeekViewControllerDelegate>
 
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (nonatomic) EKCalendarChooser *calendarChooser;
 @property (nonatomic) BOOL firstTimeAppears;
-@property (nonatomic) MonthViewController *monthViewController;
+@property (nonatomic) WeekViewController *weekViewController;
 
 @end
 
@@ -42,16 +43,12 @@
     
     self.dateFormatter = [NSDateFormatter new];
     self.dateFormatter.calendar = self.calendar;
-    
-    self.navigationItem.leftBarButtonItem.customView = self.currentDateLabel;
 	
-    MonthViewController *controller = [[MonthViewController alloc]init];
-	[self addChildViewController:controller];
-	[self.containerView addSubview:controller.view];
-	controller.view.frame = self.containerView.bounds;
-	[controller didMoveToParentViewController:self];
-	self.calendarViewController = controller;
-    
+    self.calendarViewController = self.weekViewController;
+	[self addChildViewController:self.weekViewController];
+	[self.view addSubview:self.weekViewController.view];
+	self.weekViewController.view.frame = CGRectMake(0, 100, ScreenWidth, ScreenHeight-200);
+	[self.weekViewController didMoveToParentViewController:self];
     self.firstTimeAppears = YES;
 }
 
@@ -59,11 +56,11 @@
 {
     [super viewDidAppear:animated];
     
-//    if (self.firstTimeAppears) {
-//        NSDate *date = [self.calendar mgc_startOfWeekForDate:[NSDate date]];
-//        [self.calendarViewController moveToDate:date animated:NO];
-//        self.firstTimeAppears = NO;
-//    }
+    if (self.firstTimeAppears) {
+        NSDate *date = [self.calendar mgc_startOfWeekForDate:[NSDate date]];
+        [self.calendarViewController moveToDate:date animated:NO];
+        self.firstTimeAppears = NO;
+    }
 }
 
 
@@ -81,17 +78,15 @@
 
 #pragma mark - Private
 
-
-- (MonthViewController*)monthViewController
+- (WeekViewController*)weekViewController
 {
-    if (_monthViewController == nil) {
-        _monthViewController = [[MonthViewController alloc]initWithEventStore:self.eventStore];
-        _monthViewController.calendar = self.calendar;
-        _monthViewController.delegate = self;
+    if (_weekViewController == nil) {
+        _weekViewController = [[WeekViewController alloc]initWithEventStore:self.eventStore];
+        _weekViewController.calendar = self.calendar;
+        _weekViewController.delegate = self;
     }
-    return _monthViewController;
+    return _weekViewController;
 }
-
 
 -(void)moveToNewController:(CalendarViewController*)newController atDate:(NSDate*)date
 {
@@ -100,7 +95,7 @@
     
     [self transitionFromViewController:self.calendarViewController toViewController:newController duration:.5 options:UIViewAnimationOptionTransitionFlipFromLeft animations:^
      {
-         newController.view.frame = self.containerView.bounds;
+         newController.view.frame = self.view.bounds;
          newController.view.hidden = YES;
      } completion:^(BOOL finished)
      {
@@ -161,26 +156,15 @@
 {
     [self.dateFormatter setDateFormat:@"MMMM yyyy"];
     
-    NSString *str = [self.dateFormatter stringFromDate:date];
-    self.currentDateLabel.text = str;
-    [self.currentDateLabel sizeToFit];
+//    NSString *str = [self.dateFormatter stringFromDate:date];
+//    self.currentDateLabel.text = str;
+//    [self.currentDateLabel sizeToFit];
 }
 
 - (void)calendarViewController:(CalendarViewController*)controller didSelectEvent:(EKEvent*)event
 {
     //NSLog(@"calendarViewController:didSelectEvent");
 }
-
-#pragma mark - MGCDayPlannerEKViewControllerDelegate
-
-- (UINavigationController*)navigationControllerForEKEventViewController
-{
-//    if (!isiPad) {
-//        return self.navigationController;
-//    }
-    return nil;
-}
-
 
 #pragma mark - EKCalendarChooserDelegate
 

@@ -17,9 +17,7 @@
 		B14D8F8521B7F64A00B8D740 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B14D8F8421B7F64A00B8D740 /* UIKit.framework */; };
 		B14D8F8721B7F65900B8D740 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B14D8F8621B7F65900B8D740 /* Foundation.framework */; };
 		B14D8F8921B7F66100B8D740 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B14D8F8821B7F66100B8D740 /* CoreGraphics.framework */; };
-		B14D8F8C21B7F7EA00B8D740 /* MonthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B14D8F8B21B7F7EA00B8D740 /* MonthViewController.m */; };
 		B14D8F8F21B7F88100B8D740 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B14D8F8D21B7F88100B8D740 /* MainViewController.m */; };
-		B14D8F9221B7F8D500B8D740 /* MonthSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B14D8F9121B7F8D400B8D740 /* MonthSettingsViewController.m */; };
 		B14D8FDB21B7F90F00B8D740 /* MGCCalendarHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B14D8F9421B7F90E00B8D740 /* MGCCalendarHeaderCell.xib */; };
 		B14D8FDC21B7F90F00B8D740 /* MGCCalendarHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B14D8F9621B7F90E00B8D740 /* MGCCalendarHeaderView.m */; };
 		B14D8FDD21B7F90F00B8D740 /* MGCEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B14D8F9721B7F90E00B8D740 /* MGCEventCell.m */; };
@@ -88,6 +86,8 @@
 		B19E5266219E6A7B006BBC3C /* TBCityIconInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B19E5261219E6A7B006BBC3C /* TBCityIconInfo.m */; };
 		B19E5267219E6A7B006BBC3C /* UIImage+TBCityIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = B19E5264219E6A7B006BBC3C /* UIImage+TBCityIconFont.m */; };
 		BF96CBF433ECA0B5B2552701 /* Pods_Yueke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E351D5ECE0B7E202373D086 /* Pods_Yueke.framework */; };
+		EF2E7BCE21B96B20007E33BF /* WeekSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF2E7BCB21B96B20007E33BF /* WeekSettingsViewController.m */; };
+		EF2E7BCF21B96B20007E33BF /* WeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF2E7BCD21B96B20007E33BF /* WeekViewController.m */; };
 		EF7CDC2121A065FD0096162E /* UIButton+Gradient.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7CDC1F21A065FD0096162E /* UIButton+Gradient.m */; };
 		EF7CDC2221A065FD0096162E /* UIImage+Gradient.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7CDC2021A065FD0096162E /* UIImage+Gradient.m */; };
 		EF7CDC2521A06A310096162E /* UIView+Gradient.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7CDC2421A06A310096162E /* UIView+Gradient.m */; };
@@ -122,12 +122,8 @@
 		B14D8F8421B7F64A00B8D740 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B14D8F8621B7F65900B8D740 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B14D8F8821B7F66100B8D740 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		B14D8F8A21B7F7EA00B8D740 /* MonthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthViewController.h; sourceTree = "<group>"; };
-		B14D8F8B21B7F7EA00B8D740 /* MonthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthViewController.m; sourceTree = "<group>"; };
 		B14D8F8D21B7F88100B8D740 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		B14D8F8E21B7F88100B8D740 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		B14D8F9021B7F8D400B8D740 /* MonthSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthSettingsViewController.h; sourceTree = "<group>"; };
-		B14D8F9121B7F8D400B8D740 /* MonthSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthSettingsViewController.m; sourceTree = "<group>"; };
 		B14D8F9421B7F90E00B8D740 /* MGCCalendarHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MGCCalendarHeaderCell.xib; sourceTree = "<group>"; };
 		B14D8F9521B7F90E00B8D740 /* MGCYearCalendarMonthHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCYearCalendarMonthHeaderView.h; sourceTree = "<group>"; };
 		B14D8F9621B7F90E00B8D740 /* MGCCalendarHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCCalendarHeaderView.m; sourceTree = "<group>"; };
@@ -261,6 +257,10 @@
 		B19E5262219E6A7B006BBC3C /* TBCityIconFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBCityIconFont.h; sourceTree = "<group>"; };
 		B19E5263219E6A7B006BBC3C /* UIImage+TBCityIconFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+TBCityIconFont.h"; sourceTree = "<group>"; };
 		B19E5264219E6A7B006BBC3C /* UIImage+TBCityIconFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+TBCityIconFont.m"; sourceTree = "<group>"; };
+		EF2E7BCA21B96B20007E33BF /* WeekSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekSettingsViewController.h; sourceTree = "<group>"; };
+		EF2E7BCB21B96B20007E33BF /* WeekSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekSettingsViewController.m; sourceTree = "<group>"; };
+		EF2E7BCC21B96B20007E33BF /* WeekViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekViewController.h; sourceTree = "<group>"; };
+		EF2E7BCD21B96B20007E33BF /* WeekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekViewController.m; sourceTree = "<group>"; };
 		EF7CDC1D21A065FD0096162E /* UIButton+Gradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Gradient.h"; sourceTree = "<group>"; };
 		EF7CDC1E21A065FD0096162E /* UIImage+Gradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Gradient.h"; sourceTree = "<group>"; };
 		EF7CDC1F21A065FD0096162E /* UIButton+Gradient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Gradient.m"; sourceTree = "<group>"; };
@@ -474,10 +474,10 @@
 				B14D8F9321B7F90E00B8D740 /* CalendarLib */,
 				B14D8F8E21B7F88100B8D740 /* MainViewController.h */,
 				B14D8F8D21B7F88100B8D740 /* MainViewController.m */,
-				B14D8F8A21B7F7EA00B8D740 /* MonthViewController.h */,
-				B14D8F8B21B7F7EA00B8D740 /* MonthViewController.m */,
-				B14D8F9021B7F8D400B8D740 /* MonthSettingsViewController.h */,
-				B14D8F9121B7F8D400B8D740 /* MonthSettingsViewController.m */,
+				EF2E7BCA21B96B20007E33BF /* WeekSettingsViewController.h */,
+				EF2E7BCB21B96B20007E33BF /* WeekSettingsViewController.m */,
+				EF2E7BCC21B96B20007E33BF /* WeekViewController.h */,
+				EF2E7BCD21B96B20007E33BF /* WeekViewController.m */,
 			);
 			path = New;
 			sourceTree = "<group>";
@@ -777,6 +777,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF2E7BCF21B96B20007E33BF /* WeekViewController.m in Sources */,
 				B14D8FF921B7F90F00B8D740 /* MGCDayPlannerViewController.m in Sources */,
 				EFD81A332142D08600C67EC3 /* Yueke.xcdatamodeld in Sources */,
 				B174D59A215DD7F00055820A /* UIColor+Tools.m in Sources */,
@@ -825,7 +826,6 @@
 				B14D8FF121B7F90F00B8D740 /* MGCAllDayEventsViewLayout.m in Sources */,
 				B16A94A92148BCF60001F3B1 /* LTSCircleView.m in Sources */,
 				B14D8FE721B7F90F00B8D740 /* MGCMonthPlannerWeekView.m in Sources */,
-				B14D8F9221B7F8D500B8D740 /* MonthSettingsViewController.m in Sources */,
 				B14D8FF421B7F90F00B8D740 /* MGCStandardEventView.m in Sources */,
 				B14D8FF521B7F90F00B8D740 /* MGCMonthPlannerEKViewController.m in Sources */,
 				B19E5248219D6433006BBC3C /* LeftViewController.m in Sources */,
@@ -835,6 +835,7 @@
 				EFD81A3B2142D08600C67EC3 /* main.m in Sources */,
 				B14D8FE421B7F90F00B8D740 /* MGCYearCalendarView.m in Sources */,
 				B12912972150D3AA0039B06D /* NSArray+HJImages.m in Sources */,
+				EF2E7BCE21B96B20007E33BF /* WeekSettingsViewController.m in Sources */,
 				B14D8FF821B7F90F00B8D740 /* MGCInteractiveEventView.m in Sources */,
 				B14D8FF321B7F90F00B8D740 /* MGCTimedEventsViewLayout.m in Sources */,
 				EF7CDC2221A065FD0096162E /* UIImage+Gradient.m in Sources */,
@@ -843,7 +844,6 @@
 				B14D8FDC21B7F90F00B8D740 /* MGCCalendarHeaderView.m in Sources */,
 				B14D8FFA21B7F90F00B8D740 /* MGCDayColumnCell.m in Sources */,
 				EFD81A2A2142D08600C67EC3 /* AppDelegate.m in Sources */,
-				B14D8F8C21B7F7EA00B8D740 /* MonthViewController.m in Sources */,
 				B174D5A0215DFAC90055820A /* AddEventViewController.m in Sources */,
 				B14D8FE621B7F90F00B8D740 /* MGCMonthPlannerBackgroundView.m in Sources */,
 				B14D8FF721B7F90F00B8D740 /* MGCDateRange.m in Sources */,
