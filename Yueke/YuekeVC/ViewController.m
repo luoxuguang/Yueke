@@ -10,7 +10,7 @@
 #import "LTSCalendarManager.h"
 #import "EventModel.h"
 #import "AddEventViewController.h"
-#import <UIViewController+CWLateralSlide.h>
+#import "UIViewController+CWLateralSlide.h"
 #import "LeftViewController.h"
 #import "UIButton+Gradient.h"
 #import "UIView+Gradient.h"

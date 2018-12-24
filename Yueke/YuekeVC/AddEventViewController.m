@@ -9,6 +9,7 @@
 #import "AddEventViewController.h"
 #import "ZHPickView.h"
 #import "SelStudentsViewController.h"
+
 @interface AddEventViewController () <UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 
 @property (nonatomic,strong)UITableView *tableView;
@@ -37,7 +38,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     if (!self.model.relid) {
-        self.dateField.text = [YKTool getTimeWithStr:@"YYYY-MM-dd" Date:self.model.startDate];
+        self.dateField.text = [YKTool getYMDWithdate:self.model.startDate];
         self.startDateField.text = [NSString stringWithFormat:@"%@",self.dataArr[self.model.cellNum]];
         self.endDateField.text = [NSString stringWithFormat:@"%ld%@",[[self.startDateField.text substringToIndex:2] integerValue]+1,[self.startDateField.text substringFromIndex:2]];
         _hour = self.startDateField.text;
