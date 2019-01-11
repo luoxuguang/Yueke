@@ -79,6 +79,7 @@
         self.manager.calenderScrollView.Events =mulArr;
         
     } failure:^(NSError *error) {
+        [JohnAlertManager showAlertWithType:JohnTopAlertTypeError title:@"服务器出错啦！"];
         [MBProgressHUD hideHUDForView:self.view];
         [self.manager.calenderScrollView.tableView.mj_header endRefreshing];
     }];
