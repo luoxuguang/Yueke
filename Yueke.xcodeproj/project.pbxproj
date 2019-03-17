@@ -715,7 +715,7 @@
 				GCC_PREFIX_HEADER = "Yueke/supporting files/Yueke.pch";
 				INFOPLIST_FILE = "Yueke/supporting files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xianglin.xl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xinglin.xl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -735,7 +735,7 @@
 				GCC_PREFIX_HEADER = "Yueke/supporting files/Yueke.pch";
 				INFOPLIST_FILE = "Yueke/supporting files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xianglin.xl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xinglin.xl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

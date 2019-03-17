@@ -33,10 +33,10 @@ typedef NS_ENUM(NSUInteger, ADDTYPE) {
 /*
  * api
  */
-//#define BaseUrl @"http://198.181.46.66:8080/gym"
+#define BaseUrl @"http://47.100.246.72:8080/gym"
 //#define BaseUrl @"http://172.16.12.85:8089"
-//#define BaseUrl @"http://localhost:8089"
-#define BaseUrl @"http://ad98e388.ngrok.io"
+//#define BaseUrl @"http://localhost:8090"
+//#define BaseUrl @"http://http://48a22cd5.ngrok.io"
 
 #define API_login @"/login" //登录
 #define API_logout @"/logOut" //退出登录

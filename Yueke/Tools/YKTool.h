@@ -18,4 +18,8 @@
 +(NSInteger)getHourWithdate:(NSDate *)date;
 +(NSInteger)getMinWithdate:(NSDate *)date;
 +(NSString *)getYMDWithdate:(NSDate *)date;
+
++(void)saveToDisk:(id)object;
++(id)fectchHomeData;
+
 @end

@@ -74,4 +74,20 @@
     NSDateComponents *dateComponent = [calendar components:unitFlags fromDate:date];
     return [dateComponent minute];
 }
++(void)saveToDisk:(id)object{
+    
+    NSString *path = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
+    // 这个文件后缀可以是任意的，只要不与常用文件的后缀重复即可，我喜欢用data
+    NSString *filePath = [path stringByAppendingPathComponent:@"home.events.data"];
+    // 归档
+    [NSKeyedArchiver archiveRootObject:object toFile:filePath];
+}
++(id)fectchHomeData{
+    
+    NSString *path = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
+    NSString *filePath = [path stringByAppendingPathComponent:@"home.events.data"];
+    // 解档
+    id responseObject = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+    return responseObject;
+}
 @end

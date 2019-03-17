@@ -60,32 +60,44 @@
     [MBProgressHUD showMessage:@"正在加载数据..." toView:self.view];
     NSDictionary *param = @{@"token":user_token,@"state":@"0"};
     [BasicNetWorking POST:[NSString stringWithFormat:@"%@%@",BaseUrl,API_allCourse] parameters:param success:^(id responseObject) {
+        
         [MBProgressHUD hideHUDForView:self.view];
         [self.manager.calenderScrollView.tableView.mj_header endRefreshing];
-        NSMutableArray *mulArr = [[NSMutableArray alloc]init];
-        [responseObject enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            EventModel *model = [[EventModel alloc]init];
-            model.startDate = [NSDate dateWithTimeIntervalSince1970:[[NSString stringWithFormat:@"%@",[obj objectForKey:@"startDate"]] longLongValue]/1000];
-            model.endDate = [NSDate dateWithTimeIntervalSince1970:[[NSString stringWithFormat:@"%@",[obj objectForKey:@"endDate"]] longLongValue]/1000];
-            model.storeName = [NSString stringWithFormat:@"%@",[[[obj objectForKey:@"dateCollege"] objectForKey:@"collegename"]stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-            model.courseName = [NSString stringWithFormat:@"%@",[[obj objectForKey:@"name"]stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-            model.storeId = [NSString stringWithFormat:@"%@",[[obj objectForKey:@"dateCollege"] objectForKey:@"fid"]];
-            model.userId = [NSString stringWithFormat:@"%@",[[obj objectForKey:@"dateUser"] objectForKey:@"fid"]];
-            model.relid = [NSString stringWithFormat:@"%@",[obj objectForKey:@"relid"]];
-            model.username = [NSString stringWithFormat:@"%@",[[[obj objectForKey:@"dateUser"] objectForKey:@"name"]stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-            [mulArr addObject:model];
-        }];
-        
-        self.manager.calenderScrollView.Events =mulArr;
+        [self dealDataWithResponse:responseObject];
+        [YKTool saveToDisk:responseObject];
         
     } failure:^(NSError *error) {
+        [self dealDataWithResponse:[YKTool fectchHomeData]];
         [JohnAlertManager showAlertWithType:JohnTopAlertTypeError title:@"服务器出错啦！"];
         [MBProgressHUD hideHUDForView:self.view];
         [self.manager.calenderScrollView.tableView.mj_header endRefreshing];
+        
     }];
     
     
 }
+
+-(void)dealDataWithResponse:(id)responseObject{
+    NSMutableArray *mulArr = [[NSMutableArray alloc]init];
+    
+    [responseObject enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        EventModel *model = [[EventModel alloc]init];
+        model.startDate = [NSDate dateWithTimeIntervalSince1970:[[NSString stringWithFormat:@"%@",[obj objectForKey:@"startDate"]] longLongValue]/1000];
+        model.endDate = [NSDate dateWithTimeIntervalSince1970:[[NSString stringWithFormat:@"%@",[obj objectForKey:@"endDate"]] longLongValue]/1000];
+        model.storeName = [NSString stringWithFormat:@"%@",[[[obj objectForKey:@"dateCollege"] objectForKey:@"collegename"]stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        model.courseName = [NSString stringWithFormat:@"%@",[[obj objectForKey:@"name"]stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        model.storeId = [NSString stringWithFormat:@"%@",[[obj objectForKey:@"dateCollege"] objectForKey:@"fid"]];
+        model.userId = [NSString stringWithFormat:@"%@",[[obj objectForKey:@"dateUser"] objectForKey:@"fid"]];
+        model.relid = [NSString stringWithFormat:@"%@",[obj objectForKey:@"relid"]];
+        model.username = [NSString stringWithFormat:@"%@",[[[obj objectForKey:@"dateUser"] objectForKey:@"name"]stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        [mulArr addObject:model];
+        
+    }];
+    
+    self.manager.calenderScrollView.Events =mulArr;
+}
+
 
 -(void)setupUI{
     self.navigationItem.title = @"约课";

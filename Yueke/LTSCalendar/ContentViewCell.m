@@ -100,6 +100,8 @@ typedef NS_ENUM(NSInteger, UIViewBorderLineType) {
     UILabel *label = [[UILabel alloc] initWithFrame:rect];
     label.textColor = [UIColor colorWithHex:0x005555];
     label.font = [UIFont systemFontOfSize:11.0];
+    label.layer.borderColor = [UIColor whiteColor].CGColor;
+    label.layer.borderWidth = 0.5;
     label.textAlignment = NSTextAlignmentCenter;
     [innerCell.contentView addSubview:label];
     LTSCalendarDayItem *item = self.calendarView.daysInWeeks[indexPath.section][indexPath.row];
@@ -119,6 +121,7 @@ typedef NS_ENUM(NSInteger, UIViewBorderLineType) {
             label.text = model.username;
             [self setViewBorder:label color:[UIColor colorWithHex:0xf8f8f8] border:0.5 type:UIViewBorderLineTypeTop];
         }
+        label.layer.borderWidth= 0;
     }
     return innerCell;
 }
